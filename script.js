@@ -24,6 +24,7 @@ function startGame(questionCount) {
     
     // Set skor awal
     score = 0;
+    currentQuestionIndex = 0;
     
     // Tampilkan soal pertama
     displayQuestion();
@@ -45,18 +46,19 @@ function getRandomQuestions(count) {
 }
 
 function displayQuestion() {
-    // Menampilkan soal dan pilihan jawaban
-    let currentQuestion = selectedQuestions[currentQuestionIndex];
+    if (currentQuestionIndex < selectedQuestions.length) {
+        let currentQuestion = selectedQuestions[currentQuestionIndex];
+        
+        document.getElementById('question').innerText = currentQuestion.question;
+        let choicesHtml = '';
+        
+        currentQuestion.choices.forEach(choice => {
+            choicesHtml += `<button class="choice-btn" onclick="checkAnswer('${choice}')">${choice}</button>`;
+        });
     
-    document.getElementById('question').innerText = currentQuestion.question;
-    let choicesHtml = '';
-    
-    currentQuestion.choices.forEach(choice => {
-        choicesHtml += `<button class="choice-btn" onclick="checkAnswer('${choice}')">${choice}</button>`;
-    });
-
-    document.getElementById('choices').innerHTML = choicesHtml;
-    document.getElementById('game-title').innerText = `Pemain: ${username} | Skor: ${score}`;
+        document.getElementById('choices').innerHTML = choicesHtml;
+        document.getElementById('game-title').innerText = `Pemain: ${username} | Skor: ${score}`;
+    }
 }
 
 function checkAnswer(selectedChoice) {
