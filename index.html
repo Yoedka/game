@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Trivia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="welcome">
+        <h1>Selamat Datang di Trivia Game!</h1>
+        <div id="name-form">
+            <input type="text" id="user-name" placeholder="Masukkan nama Anda" />
+            <button onclick="startGame()">Mulai Permainan</button>
+        </div>
+        <div id="leaderboard">
+            <h2>Leaderboard</h2>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Skor</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-list">
+                    <!-- Skor leaderboard akan ditampilkan di sini -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="question"></div>
+        <ul id="choices"></ul>
+        <div id="loading-spinner" class="spinner" style="display: none;"></div>
+        <div id="result"></div>
+        <div id="score">Score: 0</div>
+        <button id="next-btn" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+            <div class="modal-button-container">
+                <button id="retry-btn" class="modal-button" onclick="retryQuestion()">Ulangi Pertanyaan</button>
+                <button id="next-question-btn" class="modal-button" onclick="nextQuestion()">Lanjut ke Soal Berikutnya</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="questions.js"></script>
+</body>
+  </html>
+  
