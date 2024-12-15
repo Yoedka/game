@@ -1,0 +1,237 @@
+[
+    {
+        "question": "Siapa penemu lampu pijar?",
+        "choices": ["Nikola Tesla", "Thomas Edison", "Albert Einstein", "Alexander Graham Bell"],
+        "correctAnswer": "Thomas Edison"
+    },
+    {
+        "question": "Ibukota Prancis adalah?",
+        "choices": ["London", "Berlin", "Paris", "Madrid"],
+        "correctAnswer": "Paris"
+    },
+    {
+        "question": "Siapa presiden pertama Amerika Serikat?",
+        "choices": ["Abraham Lincoln", "George Washington", "John F. Kennedy", "Thomas Jefferson"],
+        "correctAnswer": "George Washington"
+    },
+    {
+        "question": "Apa nama planet terbesar di tata surya?",
+        "choices": ["Mars", "Venus", "Jupiter", "Saturnus"],
+        "correctAnswer": "Jupiter"
+    },
+    {
+        "question": "Di negara mana Anda dapat menemukan piramida terbesar?",
+        "choices": ["Mesir", "Meksiko", "India", "Yunani"],
+        "correctAnswer": "Mesir"
+    },
+    {
+        "question": "Siapa yang menulis novel '1984'?",
+        "choices": ["Aldous Huxley", "George Orwell", "J.K. Rowling", "Ernest Hemingway"],
+        "correctAnswer": "George Orwell"
+    },
+    {
+        "question": "Apa nama sungai terpanjang di dunia?",
+        "choices": ["Amazon", "Nil", "Yangtze", "Mississippi"],
+        "correctAnswer": "Amazon"
+    },
+    {
+        "question": "Siapa yang menemukan teori relativitas?",
+        "choices": ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Marie Curie"],
+        "correctAnswer": "Albert Einstein"
+    },
+    {
+        "question": "Berapa jumlah negara yang ada di dunia?",
+        "choices": ["190", "195", "200", "210"],
+        "correctAnswer": "195"
+    },
+    {
+        "question": "Apakah nama ibu kota Jepang?",
+        "choices": ["Osaka", "Kyoto", "Tokyo", "Hiroshima"],
+        "correctAnswer": "Tokyo"
+    },
+    {
+        "question": "Apa simbol kimia untuk emas?",
+        "choices": ["Ag", "Au", "Fe", "Pb"],
+        "correctAnswer": "Au"
+    },
+    {
+        "question": "Berapa banyak benua di dunia?",
+        "choices": ["5", "6", "7", "8"],
+        "correctAnswer": "7"
+    },
+    {
+        "question": "Siapa penulis 'Romeo and Juliet'?",
+        "choices": ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
+        "correctAnswer": "William Shakespeare"
+    },
+    {
+        "question": "Berapa tahun dalam satu abad?",
+        "choices": ["50", "100", "500", "1000"],
+        "correctAnswer": "100"
+    },
+    {
+        "question": "Apakah nama bintang yang paling dekat dengan Bumi?",
+        "choices": ["Sirius", "Alpha Centauri", "Proxima Centauri", "Matahari"],
+        "correctAnswer": "Matahari"
+    },
+    {
+        "question": "Di negara mana Menara Eiffel berada?",
+        "choices": ["Itali", "Spanyol", "Perancis", "Inggris"],
+        "correctAnswer": "Perancis"
+    },
+    {
+        "question": "Siapa yang menemukan telepon?",
+        "choices": ["Nikola Tesla", "Thomas Edison", "Alexander Graham Bell", "Graham Bell"],
+        "correctAnswer": "Alexander Graham Bell"
+    },
+    {
+        "question": "Apa nama alat musik yang memiliki 88 tuts?",
+        "choices": ["Gitar", "Piano", "Biola", "Harp"],
+        "correctAnswer": "Piano"
+    },
+    {
+        "question": "Siapa yang menulis novel 'Moby Dick'?",
+        "choices": ["Herman Melville", "F. Scott Fitzgerald", "Mark Twain", "H.G. Wells"],
+        "correctAnswer": "Herman Melville"
+    },
+    {
+        "question": "Apa ibu kota Italia?",
+        "choices": ["Roma", "Paris", "Madrid", "Berlin"],
+        "correctAnswer": "Roma"
+    },
+    {
+        "question": "Siapa yang pertama kali menginjakkan kaki di bulan?",
+        "choices": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "Michael Collins"],
+        "correctAnswer": "Neil Armstrong"
+    },
+    {
+        "question": "Berapa banyak warna dalam pelangi?",
+        "choices": ["5", "6", "7", "8"],
+        "correctAnswer": "7"
+    },
+    {
+        "question": "Siapa yang menciptakan karakter Mickey Mouse?",
+        "choices": ["Walt Disney", "Stan Lee", "Charles Schulz", "Jim Henson"],
+        "correctAnswer": "Walt Disney"
+    },
+    {
+        "question": "Siapa yang menemukan hukum gravitasi?",
+        "choices": ["Albert Einstein", "Isaac Newton", "Nikola Tesla", "Galileo Galilei"],
+        "correctAnswer": "Isaac Newton"
+    },
+    {
+        "question": "Di negara mana Patung Liberty berada?",
+        "choices": ["Inggris", "Perancis", "Amerika Serikat", "Kanada"],
+        "correctAnswer": "Amerika Serikat"
+    },
+    {
+        "question": "Siapa yang menulis novel 'Harry Potter'?",
+        "choices": ["J.R.R. Tolkien", "J.K. Rowling", "George R.R. Martin", "C.S. Lewis"],
+        "correctAnswer": "J.K. Rowling"
+    },
+    {
+        "question": "Apa nama ibu kota Kanada?",
+        "choices": ["Ottawa", "Toronto", "Vancouver", "Montreal"],
+        "correctAnswer": "Ottawa"
+    },
+    {
+        "question": "Apa warna langit saat matahari terbenam?",
+        "choices": ["Merah", "Biru", "Kuning", "Hijau"],
+        "correctAnswer": "Merah"
+    },
+    {
+        "question": "Siapa yang menggambar Mona Lisa?",
+        "choices": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
+        "correctAnswer": "Leonardo da Vinci"
+    },
+    {
+        "question": "Siapa penulis 'The Great Gatsby'?",
+        "choices": ["F. Scott Fitzgerald", "Ernest Hemingway", "John Steinbeck", "Mark Twain"],
+        "correctAnswer": "F. Scott Fitzgerald"
+    },
+    {
+        "question": "Apa ibu kota Jerman?",
+        "choices": ["Berlin", "Munich", "Frankfurt", "Hamburg"],
+        "correctAnswer": "Berlin"
+    },
+    {
+        "question": "Apa ibu kota Spanyol?",
+        "choices": ["Barcelona", "Madrid", "Valencia", "Sevilla"],
+        "correctAnswer": "Madrid"
+    },
+    {
+        "question": "Apa nama terbesar dari negara-negara bagian di Amerika Serikat?",
+        "choices": ["California", "Texas", "Alaska", "Florida"],
+        "correctAnswer": "Alaska"
+    },
+    {
+        "question": "Siapa penulis buku 'To Kill a Mockingbird'?",
+        "choices": ["Harper Lee", "J.D. Salinger", "F. Scott Fitzgerald", "Toni Morrison"],
+        "correctAnswer": "Harper Lee"
+    },
+    {
+        "question": "Apa nama planet terdekat dengan matahari?",
+        "choices": ["Venus", "Mars", "Bumi", "Merkurius"],
+        "correctAnswer": "Merkurius"
+    },
+    {
+        "question": "Siapa yang menciptakan karakter Superman?",
+        "choices": ["Stan Lee", "Jerry Siegel dan Joe Shuster", "Bob Kane", "Jack Kirby"],
+        "correctAnswer": "Jerry Siegel dan Joe Shuster"
+    },
+    {
+        "question": "Apa nama bahasa pemrograman yang dibuat oleh James Gosling?",
+        "choices": ["Java", "Python", "C++", "Ruby"],
+        "correctAnswer": "Java"
+    },
+    {
+        "question": "Siapa yang menciptakan Apple?",
+        "choices": ["Bill Gates", "Steve Jobs", "Elon Musk", "Mark Zuckerberg"],
+        "correctAnswer": "Steve Jobs"
+    },
+    {
+        "question": "Apa simbol kimia untuk perak?",
+        "choices": ["Au", "Ag", "Fe", "Pb"],
+        "correctAnswer": "Ag"
+    },
+    {
+        "question": "Di negara mana Anda dapat menemukan Taj Mahal?",
+        "choices": ["India", "Pakistan", "Bangladesh", "Nepal"],
+        "correctAnswer": "India"
+    },
+    {
+        "question": "Apa negara dengan jumlah penduduk terbanyak di dunia?",
+        "choices": ["India", "Amerika Serikat", "China", "Indonesia"],
+        "correctAnswer": "China"
+    },
+    {
+        "question": "Siapa yang menulis novel 'The Catcher in the Rye'?",
+        "choices": ["J.D. Salinger", "Ernest Hemingway", "John Steinbeck", "Mark Twain"],
+        "correctAnswer": "J.D. Salinger"
+    },
+    {
+        "question": "Apa warna dasar dalam desain warna RGB?",
+        "choices": ["Merah", "Biru", "Hijau", "Kuning"],
+        "correctAnswer": "Merah"
+    },
+    {
+        "question": "Berapa banyak bulan yang dimiliki planet Mars?",
+        "choices": ["1", "2", "3", "4"],
+        "correctAnswer": "2"
+    },
+    {
+        "question": "Apa ibu kota Australia?",
+        "choices": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+        "correctAnswer": "Canberra"
+    },
+    {
+        "question": "Siapa yang ditemukan teori evolusi?",
+        "choices": ["Albert Einstein", "Charles Darwin", "Galileo Galilei", "Isaac Newton"],
+        "correctAnswer": "Charles Darwin"
+    },
+    {
+        "question": "Apa simbol kimia untuk oksigen?",
+        "choices": ["O", "O2", "H", "O3"],
+        "correctAnswer": "O"
+    }
+]
