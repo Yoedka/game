@@ -139,6 +139,28 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Notification Styling */
+        .notification {
+            font-size: 1.2em;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #f8f8f8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .incorrect {
+            background-color: #F44336;
+            color: white;
+        }
+
         /* Footer */
         footer {
             background: #3b5998;
@@ -195,6 +217,7 @@
             <p id="question"></p>
             <div id="choices"></div>
             <button id="next-btn" style="display:none;" onclick="nextQuestion()">Next</button>
+            <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
     </main>
     <footer>
@@ -257,16 +280,24 @@
                     choicesContainer.appendChild(button);
                 });
                 document.getElementById("next-btn").style.display = "none";
+                document.getElementById("answer-feedback").style.display = "none"; // Hide feedback initially
             } else {
                 endGame();
             }
         }
 
-        // Function to check the answer and show the "Next" button
+        // Function to check the answer and show the feedback
         function checkAnswer(selected, correctAnswer) {
+            const feedback = document.getElementById("answer-feedback");
             if (selected === correctAnswer) {
                 score++;
+                feedback.textContent = "Jawaban Benar!";
+                feedback.className = "notification correct";
+            } else {
+                feedback.textContent = "Jawaban Salah!";
+                feedback.className = "notification incorrect";
             }
+            feedback.style.display = "block";
             document.getElementById("next-btn").style.display = "block";
         }
 
