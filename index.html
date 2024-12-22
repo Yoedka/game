@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permainan Trivia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
         * {
@@ -14,38 +15,62 @@
 
         /* Body */
         body {
-            font-family: 'Arial', sans-serif;
-            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+            background: #f0f0f0;
             text-align: center;
             color: #333;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: #3b5998;
+            color: white;
+            padding: 15px 0;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 20px;
         }
 
         /* Welcome Screen Styling */
         #welcome-screen {
-            background: linear-gradient(to bottom right, #6a5acd, #3b5998);
+            background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 500px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        #welcome-screen:hover {
+            transform: scale(1.02);
         }
 
         /* Headings */
         #welcome-screen h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             margin-bottom: 15px;
             font-weight: bold;
+            color: #3b5998;
         }
 
         #welcome-screen p {
             font-size: 1.1em;
             margin-bottom: 20px;
+            color: #555;
         }
 
         /* Input Styling */
@@ -53,16 +78,17 @@
             width: 80%;
             padding: 10px;
             margin-top: 10px;
-            border: 2px solid #fff;
+            border: 2px solid #ddd;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: #fff;
             color: #333;
             font-size: 1em;
+            transition: border-color 0.3s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #ffdf00;
+            border-color: #3b5998;
         }
 
         /* Button Styling */
@@ -96,7 +122,7 @@
         #leaderboard h2 {
             font-size: 1.5em;
             margin-bottom: 10px;
-            color: #ffdf00;
+            color: #3b5998;
         }
 
         #leaderboard-list {
@@ -111,6 +137,16 @@
             margin: 5px 0;
             padding: 10px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #3b5998;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.9em;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
 
         /* Media Queries for Responsiveness */
@@ -128,34 +164,42 @@
     </style>
 </head>
 <body>
-    <!-- Layar Selamat Datang -->
-    <div id="welcome-screen">
-        <h1>Selamat datang di Permainan Trivia!</h1>
-        <p>Siap menguji pengetahuan Anda? Masukkan nama Anda dan pilih jumlah soal untuk memulai.</p>
-        
-        <label for="username">Masukkan Nama Anda:</label>
-        <input type="text" id="username" placeholder="Masukkan nama Anda" required>
-        
-        <div class="question-selection">
-            <label>Pilih jumlah soal:</label>
-            <button class="question-btn" onclick="startGame(10)">10 Pertanyaan</button>
-            <button class="question-btn" onclick="startGame(15)">15 Pertanyaan</button>
-            <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
+    <header>
+        Permainan Trivia
+    </header>
+    <main>
+        <!-- Layar Selamat Datang -->
+        <div id="welcome-screen">
+            <h1>Selamat datang di Permainan Trivia!</h1>
+            <p>Siap menguji pengetahuan Anda? Masukkan nama Anda dan pilih jumlah soal untuk memulai.</p>
+            
+            <label for="username">Masukkan Nama Anda:</label>
+            <input type="text" id="username" placeholder="Masukkan nama Anda" required>
+            
+            <div class="question-selection">
+                <label>Pilih jumlah soal:</label>
+                <button class="question-btn" onclick="startGame(10)">10 Pertanyaan</button>
+                <button class="question-btn" onclick="startGame(15)">15 Pertanyaan</button>
+                <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
+            </div>
+            
+            <div id="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list"></ul>
+            </div>
         </div>
-        
-        <div id="leaderboard">
-            <h2>Leaderboard</h2>
-            <ul id="leaderboard-list"></ul>
-        </div>
-    </div>
 
-    <!-- Layar Permainan -->
-    <div id="game-screen" style="display:none;">
-        <h2 id="game-title"></h2>
-        <p id="question"></p>
-        <div id="choices"></div>
-        <button id="next-btn" onclick="nextQuestion()">Next</button>
-    </div>
+        <!-- Layar Permainan -->
+        <div id="game-screen" style="display:none;">
+            <h2 id="game-title"></h2>
+            <p id="question"></p>
+            <div id="choices"></div>
+            <button id="next-btn" onclick="nextQuestion()">Next</button>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 Permainan Trivia. All rights reserved.
+    </footer>
 
     <script>
         let currentQuestionIndex = 0;
