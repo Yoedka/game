@@ -4,22 +4,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permainan Trivia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Umum */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            background: #222;
+            padding: 20px;
+            font-size: 2em;
+            color: #FF6F61;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+        /* Layar Selamat Datang */
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 20px 0;
+            background-color: #444;
+            border: 2px solid #FF6F61;
+            color: #fff;
+            font-size: 1rem;
+            width: 250px;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #FF9E7B;
+        }
+
+        .question-selection {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .question-btn {
+            background-color: #FF6F61;
+            border: none;
+            padding: 15px;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .question-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .question-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Layar Permainan */
+        .game-title {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .question {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            padding: 10px;
+            background: #222;
+            border-radius: 10px;
+            width: 80%;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .choice-btn {
+            background-color: #333;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .choice-btn:hover {
+            background-color: #FF6F61;
+            transform: scale(1.05);
+        }
+
+        .choice-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        #game-screen {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .notification {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #FF9E7B;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: #000;
+            text-align: center;
+            animation: shake 0.5s ease;
+        }
+    </style>
 </head>
 <body>
     <header>
-        Permainan Trivia
+        <h1>Permainan Trivia</h1>
     </header>
+    
     <main>
         <!-- Layar Selamat Datang -->
-        <div id="welcome-screen">
-            <h1>Selamat datang di Permainan Trivia!</h1>
+        <div id="welcome-screen" class="screen">
+            <h2>Selamat datang di Permainan Trivia!</h2>
             <p>Siap menguji pengetahuan Anda? Masukkan nama Anda dan pilih jumlah soal untuk memulai.</p>
             
             <label for="username">Masukkan Nama Anda:</label>
             <input type="text" id="username" placeholder="Masukkan nama Anda" required>
-            
+
             <div class="question-selection">
                 <label>Pilih jumlah soal:</label>
                 <button class="question-btn" onclick="startGame(10)">10 Pertanyaan</button>
@@ -29,17 +183,20 @@
         </div>
 
         <!-- Layar Permainan -->
-        <div id="game-screen" style="display:none;">
-            <h2 id="game-title"></h2>
-            <p id="question"></p>
-            <div id="choices"></div>
+        <div id="game-screen" class="screen" style="display:none;">
+            <h2 id="game-title" class="game-title"></h2>
+            <p id="question" class="question"></p>
+            <div id="choices" class="choices"></div>
             <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
     </main>
+    
     <footer>
         &copy; 2024 Permainan Trivia. All rights reserved.
     </footer>
+    
     <audio id="background-music" src="music/background-music.mp3" loop autoplay></audio>
+
     <script src="script.js"></script>
 </body>
 </html>
