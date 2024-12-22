@@ -113,6 +113,28 @@
             transform: scale(0.98);
         }
 
+        /* Notification Styling */
+        .notification {
+            font-size: 1.2em;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            background-color: #f8f8f8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .correct {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .incorrect {
+            background-color: #F44336;
+            color: white;
+        }
+
         /* Footer */
         footer {
             background: #3b5998;
@@ -123,6 +145,18 @@
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
 
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #welcome-screen {
+                padding: 30px;
+                width: 90%;
+            }
+
+            .question-btn {
+                width: 80%;
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -152,6 +186,7 @@
             <p id="question"></p>
             <div id="choices"></div>
             <button id="next-btn" style="display:none;" onclick="nextQuestion()">Next</button>
+            <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
     </main>
     <footer>
@@ -211,6 +246,7 @@
                 });
 
                 document.getElementById("next-btn").style.display = "none"; // Hide "Next" button initially
+                document.getElementById("answer-feedback").style.display = "none"; // Hide feedback initially
             } else {
                 endGame();
             }
@@ -218,18 +254,16 @@
 
         // Function to check the answer and show the feedback
         function checkAnswer(selected, correctAnswer) {
-            // Normalize answers to handle case sensitivity and extra spaces
-            const normalizedSelected = selected.trim().toLowerCase();
-            const normalizedCorrectAnswer = correctAnswer.trim().toLowerCase();
-
-            if (normalizedSelected === normalizedCorrectAnswer) {
+            const feedback = document.getElementById("answer-feedback");
+            if (selected === correctAnswer) {
                 score++;
-                alert("Jawaban Benar!");  // Alert untuk jawaban benar
+                feedback.textContent = "Jawaban Benar!";
+                feedback.className = "notification correct";
             } else {
-                alert(`Jawaban Salah! Jawaban yang benar adalah: ${correctAnswer}`);  // Alert untuk jawaban salah
+                feedback.textContent = `Jawaban Salah! Jawaban yang benar adalah: ${correctAnswer}`;
+                feedback.className = "notification incorrect";
             }
-
-            // Show the "Next" button after answering
+            feedback.style.display = "block";
             document.getElementById("next-btn").style.display = "block";
         }
 
