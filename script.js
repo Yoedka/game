@@ -4,7 +4,8 @@ let score = 0;
 let selectedQuestions = [];
 let username = '';
 
-fetch('questions.json')  // Ambil soal dari file JSON
+// Ambil soal dari file JSON
+fetch('questions.json')
     .then(response => response.json())
     .then(data => {
         questions = data;  // Simpan soal ke variabel global
@@ -63,22 +64,29 @@ function displayQuestion() {
 
 function checkAnswer(selectedChoice) {
     let currentQuestion = selectedQuestions[currentQuestionIndex];
+    const feedback = document.getElementById('answer-feedback');
     
     if (selectedChoice === currentQuestion.correctAnswer) {
         score++;
-        alert('Jawaban Benar!');
+        feedback.textContent = "Jawaban Benar!";
+        feedback.className = "notification correct";
     } else {
-        alert('Jawaban Salah!');
+        feedback.textContent = `Jawaban Salah! Jawaban yang benar adalah: ${currentQuestion.correctAnswer}`;
+        feedback.className = "notification incorrect";
     }
+    feedback.style.display = "block";
 
     // Setelah menjawab, pindah ke soal berikutnya
     currentQuestionIndex++;
 
-    if (currentQuestionIndex < selectedQuestions.length) {
-        displayQuestion();
-    } else {
-        endGame();
-    }
+    setTimeout(() => {
+        feedback.style.display = "none";
+        if (currentQuestionIndex < selectedQuestions.length) {
+            displayQuestion();
+        } else {
+            endGame();
+        }
+    }, 2000); // Tunda 2 detik sebelum menampilkan soal berikutnya
 }
 
 function nextQuestion() {
