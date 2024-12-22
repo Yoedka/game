@@ -209,7 +209,8 @@
                     button.onclick = () => checkAnswer(choice, questionData.answer);
                     choicesContainer.appendChild(button);
                 });
-                document.getElementById("next-btn").style.display = "none";
+
+                document.getElementById("next-btn").style.display = "none"; // Hide "Next" button initially
             } else {
                 endGame();
             }
@@ -217,7 +218,7 @@
 
         // Function to check the answer and show the feedback
         function checkAnswer(selected, correctAnswer) {
-            // Normalisasi jawaban dengan mengubah ke lowercase dan menghapus spasi ekstra
+            // Normalize answers to handle case sensitivity and extra spaces
             const normalizedSelected = selected.trim().toLowerCase();
             const normalizedCorrectAnswer = correctAnswer.trim().toLowerCase();
 
