@@ -2,219 +2,230 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permainan Trivia</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-   <style>
- /* Umum */
-/* Umum */
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #111;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-header {
-    text-align: center;
-    background: #222;
-    padding: 5vw;
-    font-size: 3vw;
-    color: #FF6F61;
-    text-transform: uppercase;
-}
-
-.screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10vh 5vw;
-    width: 100%;
-    max-width: 600px;
-    box-sizing: border-box;
-}
-
-input[type="text"] {
-    padding: 2vw;
-    margin: 3vh 0;
-    background-color: #444;
-    border: 1px solid #FF6F61;
-    color: #fff;
-    font-size: 2vw;
-    width: 100%;
-    max-width: 350px;
-    text-align: center;
-    border-radius: 5px;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: #FF9E7B;
-}
-
-.question-selection {
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    align-items: center;
-}
-
-.question-btn {
-    background-color: #FF6F61;
-    border: none;
-    padding: 3vh 6vw;
-    color: #fff;
-    font-size: 2vw;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.question-btn:hover {
-    background-color: #FF9E7B;
-    transform: scale(1.05);
-}
-
-.question-btn:active {
-    transform: scale(0.95);
-}
-
-#game-screen {
-    animation: fadeIn 0.5s ease-out;
-    width: 100%;
-    max-width: 600px;
-    padding-bottom: 20px;
-}
-
-.game-title {
-    font-size: 3vw;
-    margin: 3vh 0;
-}
-
-.question {
-    font-size: 2.5vw;
-    margin: 3vh 0;
-    padding: 4vh;
-    background: #222;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.choices {
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.choice-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 4vh 6vw;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 2vw;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.choice-btn:hover {
-    background-color: #FF6F61;
-    transform: scale(1.05);
-}
-
-.choice-btn:active {
-    transform: scale(0.95);
-}
-
-.notification {
-    display: block;
-    margin-top: 3vh;
-    padding: 4vw;
-    background-color: #FF9E7B;
-    border-radius: 5px;
-    font-size: 2vw;
-    color: #000;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
-/* Animasi */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-/* Media Queries untuk Responsif */
-@media (max-width: 1024px) {
-    .screen, #game-screen {
-        padding: 10vh 5vw;
+    <style>
+    /* Umum */
+    body {
+        font-family: 'Press Start 2P', cursive;
+        background-color: #111;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
     }
 
-    .question-btn, .choice-btn {
-        padding: 4vh 6vw;
+    header {
+        text-align: center;
+        background: #222;
+        padding: 5vw;
         font-size: 3vw;
+        color: #FF6F61;
+        text-transform: uppercase;
+        width: 100%;
     }
 
-    .game-title, .question {
-        font-size: 4vw;
-    }
-}
-
-@media (max-width: 768px) {
-    .screen, #game-screen {
+    .screen {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         padding: 10vh 5vw;
-    }
-
-    .question-btn, .choice-btn {
-        padding: 5vh 8vw;
-        font-size: 3.5vw;
-    }
-
-    .game-title, .question {
-        font-size: 4vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .screen, #game-screen {
-        padding: 12vh 5vw;
+        width: 100%;
+        max-width: 600px;
+        box-sizing: border-box;
     }
 
     input[type="text"] {
-        font-size: 5vw;
-    }
-
-    .question-btn, .choice-btn {
-        padding: 6vh 9vw;
+        padding: 5vw;
+        margin: 3vh 0;
+        background-color: #444;
+        border: 1px solid #FF6F61;
+        color: #fff;
         font-size: 4vw;
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+        border-radius: 5px;
     }
 
-    .game-title, .question {
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #FF9E7B;
+    }
+
+    .question-selection {
+        display: flex;
+        flex-direction: column;
+        gap: 3vh;
+        align-items: center;
+    }
+
+    .question-btn {
+        background-color: #FF6F61;
+        border: none;
+        padding: 5vw 10vw;
+        color: #fff;
+        font-size: 4vw;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+        width: 80%;
+    }
+
+    .question-btn:hover {
+        background-color: #FF9E7B;
+        transform: scale(1.05);
+    }
+
+    .question-btn:active {
+        transform: scale(0.95);
+    }
+
+    #game-screen {
+        animation: fadeIn 0.5s ease-out;
+        width: 100%;
+        max-width: 600px;
+        padding-bottom: 20px;
+    }
+
+    .game-title {
         font-size: 5vw;
+        margin: 5vh 0;
+    }
+
+    .question {
+        font-size: 4vw;
+        margin: 3vh 0;
+        padding: 4vh;
+        background: #222;
+        border-radius: 8px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .choices {
+        display: flex;
+        flex-direction: column;
+        gap: 5vh;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .choice-btn {
+        background-color: #333;
+        color: #fff;
+        padding: 5vh 8vw;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 4vw;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .choice-btn:hover {
+        background-color: #FF6F61;
+        transform: scale(1.05);
+    }
+
+    .choice-btn:active {
+        transform: scale(0.95);
     }
 
     .notification {
+        display: block;
+        margin-top: 5vh;
+        padding: 5vw;
+        background-color: #FF9E7B;
+        border-radius: 5px;
         font-size: 4vw;
-        padding: 7vw;
+        color: #000;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
     }
-}
 
-</style>
+    /* Animasi */
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Media Queries untuk Responsif */
+    @media (max-width: 1024px) {
+        .screen, #game-screen {
+            padding: 10vh 5vw;
+        }
+
+        .question-btn, .choice-btn {
+            padding: 4vh 6vw;
+            font-size: 3.5vw;
+        }
+
+        .game-title, .question {
+            font-size: 4vw;
+        }
+
+        input[type="text"] {
+            font-size: 5vw;
+            padding: 4vw;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .screen, #game-screen {
+            padding: 12vh 5vw;
+        }
+
+        .question-btn, .choice-btn {
+            padding: 5vh 8vw;
+            font-size: 4vw;
+        }
+
+        .game-title, .question {
+            font-size: 5vw;
+        }
+
+        input[type="text"] {
+            font-size: 6vw;
+            padding: 6vw;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .screen, #game-screen {
+            padding: 15vh 5vw;
+        }
+
+        .question-btn, .choice-btn {
+            padding: 6vh 10vw;
+            font-size: 5vw;
+        }
+
+        .game-title, .question {
+            font-size: 6vw;
+        }
+
+        .notification {
+            font-size: 5vw;
+            padding: 7vw;
+        }
+
+        input[type="text"] {
+            font-size: 7vw;
+            padding: 8vw;
+        }
+    }
+    </style>
 </head>
 <body>
     <header>
