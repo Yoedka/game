@@ -194,7 +194,7 @@
             <h2 id="game-title"></h2>
             <p id="question"></p>
             <div id="choices"></div>
-            <button id="next-btn" onclick="nextQuestion()">Next</button>
+            <button id="next-btn" style="display:none;" onclick="nextQuestion()">Next</button>
         </div>
     </main>
     <footer>
@@ -228,87 +228,71 @@
             document.getElementById("game-screen").style.display = "block";
             document.getElementById("leaderboard").style.display = "none";
 
-            // Load questions (mockup for now)
-            loadQuestions();
-            showQuestion();
-        }
-
-        // Function to load questions (mocking an API call or static questions)
-        function loadQuestions() {
-            // Mock questions for the game (You can replace this with an API call or dynamic data)
-            questions = [
-                { question: "Apa ibu kota Indonesia?", choices: ["Jakarta", "Bali", "Surabaya", "Yogyakarta"], answer: "Jakarta" },
-                { question: "Siapa Presiden Indonesia pertama?", choices: ["Sukarno", "Suharto", "Jokowi", "Megawati"], answer: "Sukarno" },
-                { question: "Berapa banyak provinsi di Indonesia?", choices: ["33", "34", "35", "36"], answer: "34" },
-                // Add more questions as needed
-            ];
-
-            // Ensure we don't exceed the number of questions the user has selected
-            questions = questions.slice(0, totalQuestions);
+            // Load questions from the external JSON file
+            fetch('questions.json')
+                .then(response => response.json())
+                .then(data => {
+                    questions = data.slice(0, totalQuestions);  // Limit the number of questions based on user input
+                    showQuestion();
+                })
+                .catch(error => {
+                    console.error('Error loading questions:', error);
+                    alert('Terjadi kesalahan saat memuat pertanyaan.');
+                });
         }
 
         // Function to display a question
         function showQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
-            document.getElementById("question").innerText = currentQuestion.question;
-            const choicesContainer = document.getElementById("choices");
-            choicesContainer.innerHTML = "";
+            if (currentQuestionIndex < totalQuestions) {
+                const questionData = questions[currentQuestionIndex];
+                document.getElementById("question").textContent = questionData.question;
+                const choicesContainer = document.getElementById("choices");
+                choicesContainer.innerHTML = '';  // Clear previous choices
 
-            currentQuestion.choices.forEach(choice => {
-                const button = document.createElement("button");
-                button.textContent = choice;
-                button.classList.add("choice-btn");
-                button.onclick = () => checkAnswer(choice);
-                choicesContainer.appendChild(button);
-            });
-
-            document.getElementById("game-title").innerText = `Pertanyaan ${currentQuestionIndex + 1} dari ${totalQuestions}`;
-        }
-
-        // Function to check the answer
-        function checkAnswer(selectedAnswer) {
-            const currentQuestion = questions[currentQuestionIndex];
-            if (selectedAnswer === currentQuestion.answer) {
-                score++;
-            }
-
-            // Move to the next question or end the game
-            if (currentQuestionIndex < totalQuestions - 1) {
-                currentQuestionIndex++;
-                showQuestion();
+                questionData.choices.forEach(choice => {
+                    const button = document.createElement("button");
+                    button.textContent = choice;
+                    button.classList.add("question-btn");
+                    button.onclick = () => checkAnswer(choice, questionData.answer);
+                    choicesContainer.appendChild(button);
+                });
+                document.getElementById("next-btn").style.display = "none";
             } else {
                 endGame();
             }
         }
 
-        // Function to handle the end of the game
-        function endGame() {
-            alert(`Permainan selesai! Skor Anda: ${score} dari ${totalQuestions}`);
-            // Add to leaderboard
-            leaderboard.push({ name: userName, score: score });
-            leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
-
-            // Show leaderboard
-            const leaderboardList = document.getElementById("leaderboard-list");
-            leaderboardList.innerHTML = "";
-            leaderboard.slice(0, 5).forEach(player => { // Show top 5
-                const listItem = document.createElement("li");
-                listItem.textContent = `${player.name}: ${player.score}`;
-                leaderboardList.appendChild(listItem);
-            });
-
-            // Show the leaderboard screen
-            document.getElementById("leaderboard").style.display = "block";
+        // Function to check the answer and show the "Next" button
+        function checkAnswer(selected, correctAnswer) {
+            if (selected === correctAnswer) {
+                score++;
+            }
+            document.getElementById("next-btn").style.display = "block";
         }
 
         // Function to go to the next question
         function nextQuestion() {
             currentQuestionIndex++;
-            if (currentQuestionIndex < totalQuestions) {
-                showQuestion();
-            } else {
-                endGame();
-            }
+            showQuestion();
+        }
+
+        // Function to end the game
+        function endGame() {
+            // Add the player's score to the leaderboard
+            leaderboard.push({ name: userName, score: score });
+            leaderboard.sort((a, b) => b.score - a.score);  // Sort leaderboard by score descending
+
+            // Show the leaderboard
+            const leaderboardList = document.getElementById("leaderboard-list");
+            leaderboardList.innerHTML = '';
+            leaderboard.slice(0, 5).forEach(player => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${player.name}: ${player.score}`;
+                leaderboardList.appendChild(listItem);
+            });
+
+            document.getElementById("game-screen").style.display = "none";
+            document.getElementById("leaderboard").style.display = "block";
         }
     </script>
 </body>
