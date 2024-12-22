@@ -288,18 +288,25 @@
 
         // Function to check the answer and show the feedback
         function checkAnswer(selected, correctAnswer) {
-            const feedback = document.getElementById("answer-feedback");
-            if (selected === correctAnswer) {
-                score++;
-                feedback.textContent = "Jawaban Benar!";
-                feedback.className = "notification correct";
-            } else {
-                feedback.textContent = "Jawaban Salah!";
-                feedback.className = "notification incorrect";
-            }
-            feedback.style.display = "block";
-            document.getElementById("next-btn").style.display = "block";
-        }
+    const feedback = document.getElementById("answer-feedback");
+
+    // Normalisasi jawaban dengan mengubah ke lowercase dan menghapus spasi ekstra
+    const normalizedSelected = selected.trim().toLowerCase();
+    const normalizedCorrectAnswer = correctAnswer.trim().toLowerCase();
+
+    if (normalizedSelected === normalizedCorrectAnswer) {
+        score++;
+        feedback.textContent = "Jawaban Benar!";
+        feedback.className = "notification correct";
+    } else {
+        feedback.textContent = `Jawaban Salah! Jawaban yang benar adalah: ${correctAnswer}`;
+        feedback.className = "notification incorrect";
+    }
+
+    feedback.style.display = "block";
+    document.getElementById("next-btn").style.display = "block";
+}
+
 
         // Function to go to the next question
         function nextQuestion() {
