@@ -4,22 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permainan Trivia</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Welcome Screen Styling */
+        #welcome-screen {
+            background: linear-gradient(to bottom right, #6a5acd, #3b5998);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Headings */
+        #welcome-screen h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        #welcome-screen p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* Input Styling */
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            font-size: 1em;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ffdf00;
+        }
+
+        /* Button Styling */
+        .question-btn {
+            background-color: #ffdf00;
+            color: #333;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .question-btn:hover {
+            background-color: #ffd700;
+            transform: scale(1.05);
+        }
+
+        .question-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Leaderboard Styling */
+        #leaderboard {
+            margin-top: 30px;
+            font-size: 1.2em;
+        }
+
+        #leaderboard h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #ffdf00;
+        }
+
+        #leaderboard-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #leaderboard-list li {
+            background-color: #fff;
+            color: #333;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #welcome-screen {
+                padding: 30px;
+                width: 90%;
+            }
+
+            .question-btn {
+                width: 80%;
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Layar Selamat Datang -->
     <div id="welcome-screen">
-        <h1>Selamat datang di Permainan Trivia</h1>
-        <label for="username">Masukkan Nama Anda:</label>
-        <input type="text" id="username" placeholder="Masukkan nama Anda">
+        <h1>Selamat datang di Permainan Trivia!</h1>
+        <p>Siap menguji pengetahuan Anda? Masukkan nama Anda dan pilih jumlah soal untuk memulai.</p>
         
-        <div>
+        <label for="username">Masukkan Nama Anda:</label>
+        <input type="text" id="username" placeholder="Masukkan nama Anda" required>
+        
+        <div class="question-selection">
             <label>Pilih jumlah soal:</label>
             <button class="question-btn" onclick="startGame(10)">10 Pertanyaan</button>
             <button class="question-btn" onclick="startGame(15)">15 Pertanyaan</button>
             <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
         </div>
-
+        
         <div id="leaderboard">
             <h2>Leaderboard</h2>
             <ul id="leaderboard-list"></ul>
@@ -34,6 +157,115 @@
         <button id="next-btn" onclick="nextQuestion()">Next</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let totalQuestions = 0;
+        let questions = [];
+        let userName = "";
+
+        // Data Structure for Storing Player Scores
+        let leaderboard = [];
+
+        // Function to start the game
+        function startGame(numQuestions) {
+            userName = document.getElementById("username").value.trim();
+            if (!userName) {
+                alert("Masukkan nama Anda untuk memulai!");
+                return;
+            }
+
+            totalQuestions = numQuestions;
+            score = 0;
+            currentQuestionIndex = 0;
+
+            // Hide welcome screen and show game screen
+            document.getElementById("welcome-screen").style.display = "none";
+            document.getElementById("game-screen").style.display = "block";
+            document.getElementById("leaderboard").style.display = "none";
+
+            // Load questions (mockup for now)
+            loadQuestions();
+            showQuestion();
+        }
+
+        // Function to load questions (mocking an API call or static questions)
+        function loadQuestions() {
+            // Mock questions for the game (You can replace this with an API call or dynamic data)
+            questions = [
+                { question: "Apa ibu kota Indonesia?", choices: ["Jakarta", "Bali", "Surabaya", "Yogyakarta"], answer: "Jakarta" },
+                { question: "Siapa Presiden Indonesia pertama?", choices: ["Sukarno", "Suharto", "Jokowi", "Megawati"], answer: "Sukarno" },
+                { question: "Berapa banyak provinsi di Indonesia?", choices: ["33", "34", "35", "36"], answer: "34" },
+                // Add more questions as needed
+            ];
+
+            // Ensure we don't exceed the number of questions the user has selected
+            questions = questions.slice(0, totalQuestions);
+        }
+
+        // Function to display a question
+        function showQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById("question").innerText = currentQuestion.question;
+            const choicesContainer = document.getElementById("choices");
+            choicesContainer.innerHTML = "";
+
+            currentQuestion.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice;
+                button.classList.add("choice-btn");
+                button.onclick = () => checkAnswer(choice);
+                choicesContainer.appendChild(button);
+            });
+
+            document.getElementById("game-title").innerText = `Pertanyaan ${currentQuestionIndex + 1} dari ${totalQuestions}`;
+        }
+
+        // Function to check the answer
+        function checkAnswer(selectedAnswer) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selectedAnswer === currentQuestion.answer) {
+                score++;
+            }
+
+            // Move to the next question or end the game
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        // Function to handle the end of the game
+        function endGame() {
+            alert(`Permainan selesai! Skor Anda: ${score} dari ${totalQuestions}`);
+            // Add to leaderboard
+            leaderboard.push({ name: userName, score: score });
+            leaderboard.sort((a, b) => b.score - a.score); // Sort by score descending
+
+            // Show leaderboard
+            const leaderboardList = document.getElementById("leaderboard-list");
+            leaderboardList.innerHTML = "";
+            leaderboard.slice(0, 5).forEach(player => { // Show top 5
+                const listItem = document.createElement("li");
+                listItem.textContent = `${player.name}: ${player.score}`;
+                leaderboardList.appendChild(listItem);
+            });
+
+            // Show the leaderboard screen
+            document.getElementById("leaderboard").style.display = "block";
+        }
+
+        // Function to go to the next question
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < totalQuestions) {
+                showQuestion();
+            } else {
+                endGame();
+            }
+        }
+    </script>
 </body>
 </html>
