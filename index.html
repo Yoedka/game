@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
       /* Umum */
+/* Umum */
 body {
     font-family: 'Press Start 2P', cursive;
     background-color: #111;
@@ -18,8 +19,10 @@ body {
     flex-direction: column;
     justify-content: center; /* Menempatkan konten secara vertikal di tengah */
     align-items: center;     /* Menempatkan konten secara horizontal di tengah */
+    overflow: hidden;        /* Mencegah scroll */
 }
 
+/* Header */
 header {
     text-align: center;
     background: #222;
@@ -43,10 +46,11 @@ header {
     width: 90%;
     max-width: 600px;  /* Membatasi lebar agar tidak terlalu besar */
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 input[type="text"] {
-    padding: 8px;
+    padding: 12px;
     margin: 15px 0;
     background-color: #444;
     border: 1px solid #FF6F61;
@@ -162,6 +166,62 @@ input[type="text"]:focus {
     text-align: center;
     width: 100%;
     max-width: 500px;
+}
+
+/* Media Queries untuk Responsif */
+
+@media (max-width: 768px) {
+    /* Tablet / perangkat dengan layar lebih kecil */
+    .screen {
+        width: 90%;
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        max-width: 250px; /* Menyesuaikan lebar input pada layar kecil */
+    }
+
+    .question-btn, .choice-btn {
+        font-size: 0.9rem; /* Menurunkan ukuran tombol pada layar kecil */
+        padding: 10px 18px;
+    }
+
+    .game-title {
+        font-size: 1.2rem; /* Menyesuaikan ukuran judul */
+    }
+
+    .question {
+        font-size: 1rem; /* Menurunkan ukuran font pertanyaan */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Perangkat mobile */
+    body {
+        padding: 0 10px;
+    }
+
+    .screen {
+        padding: 10px;
+        width: 100%;
+    }
+
+    input[type="text"] {
+        max-width: 80%; /* Lebar input lebih besar pada perangkat mobile */
+    }
+
+    .question-btn, .choice-btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+    }
+
+    .game-title {
+        font-size: 1rem; /* Menyesuaikan ukuran judul */
+    }
+
+    .question {
+        font-size: 0.9rem; /* Menurunkan ukuran font pada perangkat kecil */
+    }
 }
 
     </style>
