@@ -216,7 +216,6 @@
             <h2 id="game-title"></h2>
             <p id="question"></p>
             <div id="choices"></div>
-            <button id="next-btn" style="display:none;" onclick="nextQuestion()">Next</button>
             <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
     </main>
@@ -291,21 +290,20 @@
     const feedback = document.getElementById("answer-feedback");
 
     // Normalisasi jawaban dengan mengubah ke lowercase dan menghapus spasi ekstra
+  function checkAnswer(selected, correctAnswer) {
+    // Normalisasi jawaban dengan mengubah ke lowercase dan menghapus spasi ekstra
     const normalizedSelected = selected.trim().toLowerCase();
     const normalizedCorrectAnswer = correctAnswer.trim().toLowerCase();
 
     if (normalizedSelected === normalizedCorrectAnswer) {
         score++;
-        feedback.textContent = "Jawaban Benar!";
-        feedback.className = "notification correct";
+        alert("Jawaban Benar!");  // Menampilkan alert untuk jawaban benar
     } else {
-        feedback.textContent = `Jawaban Salah! Jawaban yang benar adalah: ${correctAnswer}`;
-        feedback.className = "notification incorrect";
+        alert(`Jawaban Salah! Jawaban yang benar adalah: ${correctAnswer}`);  // Menampilkan alert untuk jawaban salah dan jawaban yang benar
     }
 
-    feedback.style.display = "block";
+    // Menampilkan tombol "Next"
     document.getElementById("next-btn").style.display = "block";
-}
 
 
         // Function to go to the next question
