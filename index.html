@@ -14,20 +14,24 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
             text-align: center;
             background: #222;
             padding: 20px;
-            font-size: 2em;
+            font-size: 2.5em;
             color: #FF6F61;
             text-transform: uppercase;
             letter-spacing: 2px;
+            flex: 0 0 auto;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
@@ -42,8 +46,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             text-align: center;
+            flex: 1 0 auto;
+            overflow-y: auto;
         }
 
         input[type="text"] {
@@ -52,9 +57,10 @@
             background-color: #444;
             border: 2px solid #FF6F61;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             width: 250px;
             text-align: center;
+            border-radius: 5px;
         }
 
         input[type="text"]:focus {
@@ -95,12 +101,13 @@
         }
 
         .question {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin: 20px 0;
             padding: 10px;
             background: #222;
             border-radius: 10px;
             width: 80%;
+            box-sizing: border-box;
         }
 
         .choices {
@@ -145,6 +152,9 @@
 
         #game-screen {
             animation: fadeIn 0.5s ease-out;
+            flex: 1 0 auto;
+            overflow-y: auto;
+            padding-bottom: 20px;
         }
 
         .notification {
@@ -195,8 +205,8 @@
         &copy; 2024 Permainan Trivia. All rights reserved.
     </footer>
     
-    <audio id="background-music" src="music/background-music.mp3" loop autoplay></audio>
-
+    <audio id="background-music" src="blue.mp3" loop autoplay></audio>
+    
     <script src="script.js"></script>
 </body>
 </html>
