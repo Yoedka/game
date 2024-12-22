@@ -2,272 +2,266 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permainan Trivia</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>Permainan Trivia</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-      /* Umum */
-/* Umum */
-/* Umum */
-body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #111;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Menempatkan konten secara vertikal di tengah */
-    align-items: center;     /* Menempatkan konten secara horizontal di tengah */
-    overflow: hidden;
-}
+   <style>
+  /* Umum */
+  body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+  }
 
-/* Header */
-header {
-    text-align: center;
-    background: #222;
-    padding: 2vw; /* Menggunakan vw untuk responsivitas */
-    font-size: 2rem; /* Menggunakan rem untuk ukuran font */
-    color: #FF6F61;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: 100%;
-}
+  /* Header */
+  header {
+      text-align: center;
+      background: #222;
+      padding: 2vw;
+      font-size: 2rem;
+      color: #FF6F61;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 100%;
+  }
 
-/* Layar Selamat Datang */
-.screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex: 1;
-    padding: 5vh 2vw; /* Padding responsif menggunakan vh dan vw */
-    width: 90%;
-    max-width: 600px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
+  /* Layar Selamat Datang */
+  .screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex: 1;
+      padding: 5vh 2vw;
+      width: 90%;
+      max-width: 600px;
+      box-sizing: border-box;
+      overflow: hidden;
+  }
 
-input[type="text"] {
-    padding: 1.5vw;
-    margin: 2vw 0;
-    background-color: #444;
-    border: 1px solid #FF6F61;
-    color: #fff;
-    font-size: 1.2rem;
-    width: 100%;
-    max-width: 350px; /* Mengatur lebar maksimal input */
-    text-align: center;
-    border-radius: 5px;
-}
+  input[type="text"] {
+      padding: 1.5vw;
+      margin: 2vw 0;
+      background-color: #444;
+      border: 1px solid #FF6F61;
+      color: #fff;
+      font-size: 1.2rem;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      border-radius: 5px;
+  }
 
-input[type="text"]:focus {
-    outline: none;
-    border-color: #FF9E7B;
-}
+  input[type="text"]:focus {
+      outline: none;
+      border-color: #FF9E7B;
+  }
 
-.question-selection {
-    display: flex;
-    flex-direction: column;
-    gap: 2vw;
-    align-items: center;
-}
+  .question-selection {
+      display: flex;
+      flex-direction: column;
+      gap: 2vw;
+      align-items: center;
+  }
 
-.question-btn {
-    background-color: #FF6F61;
-    border: none;
-    padding: 1.5vw 3vw;
-    color: #fff;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
+  .question-btn {
+      background-color: #FF6F61;
+      border: none;
+      padding: 1.5vw 3vw;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+  }
 
-.question-btn:hover {
-    background-color: #FF9E7B;
-    transform: scale(1.05);
-}
+  .question-btn:hover {
+      background-color: #FF9E7B;
+      transform: scale(1.05);
+  }
 
-.question-btn:active {
-    transform: scale(0.95);
-}
+  .question-btn:active {
+      transform: scale(0.95);
+  }
 
-/* Layar Permainan */
-#game-screen {
-    animation: fadeIn 0.5s ease-out;
-    flex: 1;
-    overflow-y: auto;
-    width: 90%;
-    max-width: 600px;
-    padding-bottom: 20px;
-}
+  /* Layar Permainan */
+  #game-screen {
+      animation: fadeIn 0.5s ease-out;
+      flex: 1;
+      overflow-y: auto;
+      width: 90%;
+      max-width: 600px;
+      padding-bottom: 20px;
+  }
 
-.game-title {
-    font-size: 1.8rem;
-    margin: 1.5vw 0;
-}
+  .game-title {
+      font-size: 1.8rem;
+      margin: 1.5vw 0;
+  }
 
-.question {
-    font-size: 1.3rem;
-    margin: 3vh 0;
-    padding: 2vw;
-    background: #222;
-    border-radius: 8px;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-}
+  .question {
+      font-size: 1.3rem;
+      margin: 3vh 0;
+      padding: 2vw;
+      background: #222;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+  }
 
-.choices {
-    display: flex;
-    flex-direction: column;
-    gap: 3vh;
-    width: 100%;
-    box-sizing: border-box;
-}
+  .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 3vh;
+      width: 100%;
+      box-sizing: border-box;
+  }
 
-.choice-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 2vw;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
+  .choice-btn {
+      background-color: #333;
+      color: #fff;
+      padding: 2vw;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+  }
 
-.choice-btn:hover {
-    background-color: #FF6F61;
-    transform: scale(1.05);
-}
+  .choice-btn:hover {
+      background-color: #FF6F61;
+      transform: scale(1.05);
+  }
 
-.choice-btn:active {
-    transform: scale(0.95);
-}
+  .choice-btn:active {
+      transform: scale(0.95);
+  }
 
-/* Animasi */
-@keyframes fadeIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
+  /* Animasi */
+  @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+  }
 
-.notification {
-    display: block;
-    margin-top: 3vh;
-    padding: 2vw;
-    background-color: #FF9E7B;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    color: #000;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
+  .notification {
+      display: block;
+      margin-top: 3vh;
+      padding: 2vw;
+      background-color: #FF9E7B;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: #000;
+      text-align: center;
+      width: 100%;
+      max-width: 500px;
+  }
 
-/* Media Queries untuk Responsif */
+  /* Media Queries untuk Responsif */
+  @media (max-width: 1200px) {
+      /* Perangkat dengan lebar layar maksimum 1200px */
+      body {
+          padding: 0 5vw;
+      }
 
-@media (max-width: 1024px) {
-    /* Tablet dan perangkat dengan layar medium */
-    body {
-        padding: 0 5vw;
-    }
+      .screen {
+          width: 100%;
+          padding: 10vh 5vw;
+      }
 
-    .screen {
-        width: 100%;
-        padding: 10vh 5vw;
-    }
+      input[type="text"] {
+          max-width: 80%;
+          font-size: 1.5rem;
+      }
 
-    input[type="text"] {
-        max-width: 80%;
-        font-size: 1.5rem; /* Memperbesar ukuran font input */
-    }
+      .question-btn, .choice-btn {
+          padding: 2vh 5vw;
+          font-size: 1.5rem;
+      }
 
-    .question-btn, .choice-btn {
-        padding: 2vh 5vw;
-        font-size: 1.5rem; /* Memperbesar tombol */
-    }
+      .game-title {
+          font-size: 2rem;
+      }
 
-    .game-title {
-        font-size: 2rem; /* Menyesuaikan ukuran judul */
-    }
+      .question {
+          font-size: 1.5rem;
+      }
+  }
 
-    .question {
-        font-size: 1.5rem; /* Menyesuaikan ukuran pertanyaan */
-    }
-}
+  @media (max-width: 768px) {
+      /* Tablet atau perangkat dengan layar lebih kecil */
+      body {
+          padding: 0 5vw;
+      }
 
-@media (max-width: 768px) {
-    /* Tablet atau perangkat dengan layar lebih kecil */
-    body {
-        padding: 0 5vw;
-    }
+      .screen {
+          width: 100%;
+          padding: 10vh 5vw;
+      }
 
-    .screen {
-        width: 100%;
-        padding: 10vh 5vw;
-    }
+      input[type="text"] {
+          max-width: 80%;
+          font-size: 1.5rem;
+      }
 
-    input[type="text"] {
-        max-width: 80%;
-        font-size: 1.5rem; /* Memperbesar ukuran font input */
-    }
+      .question-btn, .choice-btn {
+          padding: 2vh 5vw;
+          font-size: 1.5rem;
+      }
 
-    .question-btn, .choice-btn {
-        padding: 2vh 5vw;
-        font-size: 1.5rem; /* Memperbesar tombol */
-    }
+      .game-title {
+          font-size: 2rem;
+      }
 
-    .game-title {
-        font-size: 2rem; /* Menyesuaikan ukuran judul */
-    }
+      .question {
+          font-size: 1.5rem;
+      }
+  }
 
-    .question {
-        font-size: 1.5rem; /* Menyesuaikan ukuran pertanyaan */
-    }
-}
+  @media (max-width: 480px) {
+      /* Perangkat mobile */
+      body {
+          padding: 0 5vw;
+      }
 
-@media (max-width: 480px) {
-    /* Perangkat mobile */
-    body {
-        padding: 0 5vw;
-    }
+      .screen {
+          width: 100%;
+          padding: 10vh 5vw;
+      }
 
-    .screen {
-        width: 100%;
-        padding: 10vh 5vw;
-    }
+      input[type="text"] {
+          max-width: 90%;
+          font-size: 1.5rem;
+      }
 
-    input[type="text"] {
-        max-width: 90%;
-        font-size: 1.5rem; /* Memperbesar ukuran font input */
-    }
+      .question-btn, .choice-btn {
+          padding: 2vh 5vw;
+          font-size: 1.5rem;
+      }
 
-    .question-btn, .choice-btn {
-        padding: 2vh 5vw;
-        font-size: 1.5rem; /* Memperbesar tombol */
-    }
+      .game-title {
+          font-size: 2rem;
+      }
 
-    .game-title {
-        font-size: 2rem; /* Menyesuaikan ukuran judul */
-    }
+      .question {
+          font-size: 1.5rem;
+      }
 
-    .question {
-        font-size: 1.5rem; /* Menyesuaikan ukuran pertanyaan */
-    }
-
-    .notification {
-        font-size: 1.5rem;
-        padding: 3vw;
-    }
-}
-
-
-    </style>
+      .notification {
+          font-size: 1.5rem;
+          padding: 3vw;
+      }
+  }
+</style>
 </head>
 <body>
     <header>
