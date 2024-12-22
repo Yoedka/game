@@ -1,159 +1,157 @@
-/* Global Styles */
+/* Umum */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2f2f2f; /* Gelap untuk nuansa game */
-    color: white;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #111;
+    color: #fff;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
     overflow: hidden;
 }
 
-/* Title & Welcome Section */
-#welcome-screen h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffcc00;
-}
-
-#username {
-    padding: 10px;
-    font-size: 1.2rem;
-    margin: 10px 0;
-    border: 2px solid #ffcc00;
-    background-color: #333;
-    color: white;
-    width: 250px;
-}
-
-#username::placeholder {
-    color: #aaa;
-}
-
-button {
-    padding: 15px 25px;
-    margin: 10px;
-    font-size: 1rem;
-    color: white;
-    background-color: #4CAF50;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
-}
-
-.question-btn {
-    background-color: #008CBA;
-}
-
-.question-btn:hover {
-    background-color: #006f8a;
-}
-
-/* Game Screen */
-#game-screen {
+header {
     text-align: center;
-    display: none;
-    color: white;
-    font-size: 1.2rem;
-    width: 100%;
+    background: #222;
+    padding: 20px;
+    font-size: 2em;
+    color: #FF6F61;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-#game-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #ffcc00;
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
-#question {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+h2 {
+    font-size: 2rem;
+    margin-top: 20px;
 }
 
-#choices {
+/* Layar Selamat Datang */
+.screen {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #444;
+    border: 2px solid #FF6F61;
+    color: #fff;
+    font-size: 1rem;
+    width: 250px;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #FF9E7B;
+}
+
+.question-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.question-btn {
+    background-color: #FF6F61;
+    border: none;
+    padding: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+.question-btn:hover {
+    transform: scale(1.1);
+}
+
+.question-btn:active {
+    transform: scale(0.9);
+}
+
+/* Layar Permainan */
+.game-title {
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.question {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    padding: 10px;
+    background: #222;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .choice-btn {
     background-color: #333;
-    margin: 5px;
-    padding: 15px;
-    width: 80%;
-    font-size: 1.1rem;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .choice-btn:hover {
-    background-color: #666;
+    background-color: #FF6F61;
     transform: scale(1.05);
 }
 
-#next-btn {
+.choice-btn:active {
+    transform: scale(0.95);
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+#game-screen {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.notification {
+    display: block;
     margin-top: 20px;
-    padding: 15px 30px;
-    background-color: #ffcc00;
-    color: black;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#next-btn:hover {
-    background-color: #f1b100;
-    transform: scale(1.1);
-}
-
-/* Leaderboard */
-#leaderboard {
-    margin-top: 20px;
-    background-color: #333;
-    padding: 15px;
-    border-radius: 10px;
-    width: 300px;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-#leaderboard h2 {
-    color: #ffcc00;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-#leaderboard-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-#leaderboard-list li {
-    background-color: #444;
     padding: 10px;
-    margin-bottom: 5px;
-    font-size: 1rem;
+    background-color: #FF9E7B;
     border-radius: 5px;
-    text-align: left;
-}
-
-#leaderboard-list li:nth-child(even) {
-    background-color: #555;
-}
-
-#leaderboard-list li:last-child {
-    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: #000;
+    text-align: center;
+    animation: shake 0.5s ease;
 }
