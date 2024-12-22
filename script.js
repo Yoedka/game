@@ -58,7 +58,8 @@ function displayQuestion() {
         });
     
         document.getElementById('choices').innerHTML = choicesHtml;
-        document.getElementById('game-title').innerText = `Pemain: ${username} | Skor: ${score}`;
+        document.getElementById('game-title').innerText = `Pemain: ${username}`;
+        document.getElementById('game-title').innerText = `Skor: ${score}`;
     }
 }
 
