@@ -8,14 +8,14 @@ async function loadQuestions() {
     try {
         const response = await fetch('questions.json');
         questions = await response.json();
-        console.log('Soal berhasil dimuat:', questions); // Debugging
+        console.log('Soal berhasil dimuat:', questions);
     } catch (error) {
         console.error('Gagal memuat soal:', error);
     }
 }
 
 // Memulai permainan
-function startGame(numQuestions) {
+async function startGame(numQuestions) {
     const username = document.getElementById('username').value.trim();
 
     if (username === '') {
@@ -23,7 +23,8 @@ function startGame(numQuestions) {
         return;
     }
 
-    // Menyembunyikan layar selamat datang dan menampilkan layar permainan
+    await loadQuestions();
+
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
 
@@ -37,17 +38,16 @@ function startGame(numQuestions) {
 function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
         const questionData = questions[currentQuestionIndex];
-        console.log('Menampilkan soal:', questionData); // Debugging
+        console.log('Menampilkan soal:', questionData);
 
         const questionText = questionData.question;
         const choices = questionData.choices;
 
-        // Menampilkan soal dan pilihan
         document.getElementById('question').innerText = questionText;
 
         const choicesContainer = document.getElementById('choices');
-        choicesContainer.innerHTML = ''; // Reset pilihan
-        choices.forEach((choice, index) => {
+        choicesContainer.innerHTML = '';
+        choices.forEach((choice) => {
             const button = document.createElement('button');
             button.innerText = choice;
             button.classList.add('choice-btn');
@@ -55,14 +55,13 @@ function showNextQuestion() {
             choicesContainer.appendChild(button);
         });
 
-        // Update judul permainan
         document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     } else {
         showLeaderboard();
     }
 }
 
-// Menangani jawaban yang dipilih
+// Menangani jawaban
 function handleAnswer(choice, correctAnswer) {
     if (choice === correctAnswer) {
         score++;
@@ -75,19 +74,16 @@ function handleAnswer(choice, correctAnswer) {
 // Menampilkan leaderboard
 function showLeaderboard() {
     const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-
     const username = document.getElementById('username').value.trim();
     const userScore = { name: username, score: score };
 
     leaderboard.push(userScore);
     leaderboard.sort((a, b) => b.score - a.score);
-
-    // Simpan leaderboard ke localStorage
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
 
     const leaderboardList = document.getElementById('leaderboard-list');
     leaderboardList.innerHTML = '';
-    leaderboard.forEach(entry => {
+    leaderboard.forEach((entry) => {
         const li = document.createElement('li');
         li.innerText = `${entry.name}: ${entry.score}`;
         leaderboardList.appendChild(li);
@@ -103,7 +99,6 @@ function restartGame() {
     document.getElementById('welcome-screen').style.display = 'block';
 }
 
-// Memuat soal saat halaman dimuat
 window.onload = async () => {
-    await loadQuestions(); // Pastikan soal dimuat sebelum permainan dimulai
+    await loadQuestions();
 };
