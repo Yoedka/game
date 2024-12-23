@@ -39,11 +39,7 @@ function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
         // Ambil data soal saat ini
         const questionData = questions[currentQuestionIndex];
-          if (!questionData) {
-        endGame();
-        return;
-    }
-
+        
         // Update teks pertanyaan
         document.getElementById('question').innerText = questionData.question;
 
