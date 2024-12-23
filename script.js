@@ -61,15 +61,28 @@ function showNextQuestion() {
     }
 }
 
-// Menangani jawaban
 function handleAnswer(choice, correctAnswer) {
+    const feedback = document.getElementById('answer-feedback');
+
     if (choice === correctAnswer) {
         score++;
+        feedback.style.display = 'block';
+        feedback.innerText = "Jawaban Anda Benar!";
+        feedback.style.backgroundColor = '#4CAF50'; // Warna hijau untuk jawaban benar
+    } else {
+        feedback.style.display = 'block';
+        feedback.innerText = `Jawaban Salah! Yang benar adalah: ${correctAnswer}`;
+        feedback.style.backgroundColor = '#f44336'; // Warna merah untuk jawaban salah
     }
 
-    currentQuestionIndex++;
-    showNextQuestion();
+    // Sembunyikan notifikasi setelah beberapa detik
+    setTimeout(() => {
+        feedback.style.display = 'none';
+        currentQuestionIndex++;
+        showNextQuestion();
+    }, 2000); // 2 detik
 }
+
 
 // Menampilkan leaderboard
 function showLeaderboard() {
