@@ -6,59 +6,38 @@
     <title>Permainan Trivia</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* Umum */
+       /* Umum */
         body {
             font-family: 'Press Start 2P', cursive;
             background-color: #111;
             color: #fff;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            padding-top: 60px; /* Memberikan ruang untuk header */
-            padding-bottom: 40px; /* Memberikan ruang untuk footer */
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #222;
-            text-align: center;
-            padding: 15px 10px;
-            font-size: 1.5rem;
-            color: #FF6F61;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 1000;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #222;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
-            color: #fff;
-            z-index: 1000;
-        }
-
-        main {
-            flex: 1;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            gap: 30px;
+            overflow: auto; /* Mengubah overflow dari hidden ke auto */
+        }
+
+        header {
+            text-align: center;
+            background: #222;
+            padding: 1.5vw;
+            font-size: 1.5rem;
+            color: #FF6F61;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-top: 10px;
+            font-size: 1.5rem;
+            margin-top: 15px;
         }
 
         /* Layar Selamat Datang */
@@ -67,21 +46,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: 100vh;
             text-align: center;
-            gap: 25px;
         }
 
         input[type="text"] {
-            padding: 15px;
-            margin: 10px 0;
+            padding: 1vw;
+            margin: 1.5vw 0;
             background-color: #444;
             border: 1px solid #FF6F61;
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1rem;
             width: 100%;
-            max-width: 300px;
+            max-width: 350px;
             text-align: center;
-            border-radius: 5px;
         }
 
         input[type="text"]:focus {
@@ -92,68 +70,220 @@
         .question-selection {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 1.5vw;
             align-items: center;
         }
 
         .question-btn {
             background-color: #FF6F61;
             border: none;
-            padding: 15px 30px;
+            padding: 1vw 2vw;
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         .question-btn:hover {
             background-color: #FF9E7B;
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .question-btn:active {
-            transform: scale(1);
+            transform: scale(0.95);
         }
 
-        /* Media Queries */
-        @media (max-width: 768px) {
-            header {
-                font-size: 1.3rem;
-                padding: 10px;
+        /* Layar Permainan */
+        .game-title {
+            font-size: 1.5rem;
+            margin: 1vw 0;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin: 2vh 0;
+            padding: 1.5vw;
+            background: #222;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .choice-btn {
+            background-color: #333;
+            color: #fff;
+            padding: 1.5vw;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .choice-btn:hover {
+            background-color: #FF6F61;
+            transform: scale(1.05);
+        }
+
+        .choice-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .notification {
+            display: block;
+            margin-top: 3vh;
+            padding: 2vw;
+            background-color: #FF9E7B;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: #000;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Media Queries untuk Responsif */
+        @media (max-width: 1200px) {
+            /* Perangkat dengan lebar layar maksimum 1200px */
+            body {
+                padding: 0 5vw;
             }
 
-            h2 {
-                font-size: 1.5rem;
+            .screen {
+                width: 100%;
+                padding: 10vh 5vw;
             }
 
             input[type="text"] {
-                font-size: 1rem;
+                max-width: 80%;
+                font-size: 1.2rem;
             }
 
-            .question-btn {
-                font-size: 1rem;
-                padding: 12px 25px;
+            .question-btn, .choice-btn {
+                padding: 1vw 2vw;
+                font-size: 1.2rem;
+            }
+
+            .game-title {
+                font-size: 1.5rem;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+        }
+#leaderboard {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#leaderboard table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+}
+
+#leaderboard th, #leaderboard td {
+    border: 1px solid #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#leaderboard th {
+    background-color: #444;
+    color: #FF6F61;
+}
+
+#leaderboard td {
+    background-color: #222;
+}
+
+#leaderboard button {
+    margin-top: 20px;
+}
+
+        @media (max-width: 768px) {
+            /* Tablet atau perangkat dengan layar lebih kecil */
+            body {
+                padding: 0 5vw;
+            }
+
+            .screen {
+                width: 100%;
+                padding: 10vh 5vw;
+            }
+
+            input[type="text"] {
+                max-width: 80%;
+                font-size: 1.2rem;
+            }
+
+            .question-btn, .choice-btn {
+                padding: 1vw 2vw;
+                font-size: 1.2rem;
+            }
+
+            .game-title {
+                font-size: 1.5rem;
+            }
+
+            .question {
+                font-size: 1.2rem;
             }
         }
 
         @media (max-width: 480px) {
-            header {
-                font-size: 1.2rem;
-                padding: 8px;
+            /* Perangkat mobile */
+            body {
+                padding: 0 5vw;
             }
 
-            h2 {
-                font-size: 1.3rem;
+            .screen {
+                width: 100%;
+                padding: 10vh 5vw;
             }
 
             input[type="text"] {
-                font-size: 0.9rem;
+                max-width: 90%;
+                font-size: 1.2rem;
             }
 
-            .question-btn {
-                font-size: 0.9rem;
-                padding: 10px 20px;
+            .question-btn, .choice-btn {
+                padding: 1vw 2vw;
+                font-size: 1.2rem;
+            }
+
+            .game-title {
+                font-size: 1.5rem;
+            }
+
+            .question {
+                font-size: 1.2rem;
+            }
+
+            .notification {
+                font-size: 1.2rem;
+                padding: 3vw;
             }
         }
     </style>
@@ -183,6 +313,12 @@
             <div id="choices" class="choices"></div>
             <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
+    <div id="leaderboard-screen" class="screen" style="display:none;">
+    <h2>Leaderboard</h2>
+    <div id="leaderboard"></div>
+    <button onclick="restartGame()">Main Lagi</button>
+</div>
+
     </main>
     
     <footer>
