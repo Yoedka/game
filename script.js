@@ -39,6 +39,10 @@ function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
         // Ambil data soal saat ini
         const questionData = questions[currentQuestionIndex];
+if (!questionQuestion) {
+        endGame();
+        return;
+    }
 
         // Update teks pertanyaan
         document.getElementById('question').innerText = questionData.question;
@@ -85,35 +89,41 @@ function handleAnswer(choice, correctAnswer) {
 }
 
 
+function endGame() {
+    saveScore(username, score);
+    showLeaderboard();
+}
+
+function saveScore(name, score) {
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    leaderboard.push({ name, score });
+    leaderboard.sort((a, b) => b.score - a.score);
+    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+}
+
 function showLeaderboard() {
-    const username = localStorage.getItem('username');
-    const leaderboardData = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    updateLeaderboard();
+    document.getElementById("game-screen").style.display = "none";
+    document.getElementById("leaderboard-screen").style.display = "block";
+}
 
-    // Tambahkan skor pengguna ke leaderboard
-    leaderboardData.push({ username, score });
-    leaderboardData.sort((a, b) => b.score - a.score); // Urutkan dari skor tertinggi
-    localStorage.setItem('leaderboard', JSON.stringify(leaderboardData));
+function updateLeaderboard() {
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const leaderboardTable = document.getElementById("leaderboard-table").getElementsByTagName("tbody")[0];
+    leaderboardTable.innerHTML = "";
 
-    // Tampilkan leaderboard
-    const leaderboardContainer = document.getElementById('leaderboard');
-    leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
-    leaderboardData.forEach((entry, index) => {
-        const entryDiv = document.createElement('div');
-        entryDiv.innerText = `${index + 1}. ${entry.username} - ${entry.score}`;
-        leaderboardContainer.appendChild(entryDiv);
+    leaderboard.forEach((entry, index) => {
+        const row = leaderboardTable.insertRow();
+        row.insertCell(0).textContent = index + 1;
+        row.insertCell(1).textContent = entry.name;
+        row.insertCell(2).textContent = entry.score;
     });
-
-    // Sembunyikan layar permainan, tampilkan layar leaderboard
-    document.getElementById('game-screen').style.display = 'none';
-    document.getElementById('leaderboard-screen').style.display = 'block';
 }
 
-// Restart permainan
 function restartGame() {
-    document.getElementById('leaderboard-screen').style.display = 'none';
-    document.getElementById('welcome-screen').style.display = 'block';
+    document.getElementById("leaderboard-screen").style.display = "none";
+    document.getElementById("welcome-screen").style.display = "block";
 }
-
 window.onload = async () => {
     await loadQuestions();
 };
