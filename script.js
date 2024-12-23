@@ -39,7 +39,7 @@ function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
         // Ambil data soal saat ini
         const questionData = questions[currentQuestionIndex];
-if (!questionData) {
+          if (!questionData) {
         endGame();
         return;
     }
