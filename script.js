@@ -37,17 +37,16 @@ async function startGame(numQuestions) {
 // Menampilkan soal berikutnya
 function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
+        // Ambil data soal saat ini
         const questionData = questions[currentQuestionIndex];
-        console.log('Menampilkan soal:', questionData);
 
-        const questionText = questionData.question;
-        const choices = questionData.choices;
+        // Update teks pertanyaan
+        document.getElementById('question').innerText = questionData.question;
 
-        document.getElementById('question').innerText = questionText;
-
+        // Update pilihan jawaban
         const choicesContainer = document.getElementById('choices');
-        choicesContainer.innerHTML = '';
-        choices.forEach((choice) => {
+        choicesContainer.innerHTML = ''; // Hapus pilihan sebelumnya
+        questionData.choices.forEach((choice) => {
             const button = document.createElement('button');
             button.innerText = choice;
             button.classList.add('choice-btn');
@@ -55,8 +54,10 @@ function showNextQuestion() {
             choicesContainer.appendChild(button);
         });
 
+        // Update judul permainan
         document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     } else {
+        // Semua soal selesai, tampilkan leaderboard
         showLeaderboard();
     }
 }
@@ -75,7 +76,7 @@ function handleAnswer(choice, correctAnswer) {
         feedback.style.backgroundColor = '#f44336'; // Warna merah untuk jawaban salah
     }
 
-    // Sembunyikan notifikasi setelah beberapa detik
+    // Tampilkan notifikasi dan lanjutkan ke pertanyaan berikutnya
     setTimeout(() => {
         feedback.style.display = 'none';
         currentQuestionIndex++;
@@ -84,24 +85,25 @@ function handleAnswer(choice, correctAnswer) {
 }
 
 
-// Menampilkan leaderboard
 function showLeaderboard() {
-    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-    const username = document.getElementById('username').value.trim();
-    const userScore = { name: username, score: score };
+    const username = localStorage.getItem('username');
+    const leaderboardData = JSON.parse(localStorage.getItem('leaderboard')) || [];
 
-    leaderboard.push(userScore);
-    leaderboard.sort((a, b) => b.score - a.score);
-    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    // Tambahkan skor pengguna ke leaderboard
+    leaderboardData.push({ username, score });
+    leaderboardData.sort((a, b) => b.score - a.score); // Urutkan dari skor tertinggi
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboardData));
 
-    const leaderboardList = document.getElementById('leaderboard-list');
-    leaderboardList.innerHTML = '';
-    leaderboard.forEach((entry) => {
-        const li = document.createElement('li');
-        li.innerText = `${entry.name}: ${entry.score}`;
-        leaderboardList.appendChild(li);
+    // Tampilkan leaderboard
+    const leaderboardContainer = document.getElementById('leaderboard');
+    leaderboardContainer.innerHTML = '<h2>Leaderboard</h2>';
+    leaderboardData.forEach((entry, index) => {
+        const entryDiv = document.createElement('div');
+        entryDiv.innerText = `${index + 1}. ${entry.username} - ${entry.score}`;
+        leaderboardContainer.appendChild(entryDiv);
     });
 
+    // Sembunyikan layar permainan, tampilkan layar leaderboard
     document.getElementById('game-screen').style.display = 'none';
     document.getElementById('leaderboard-screen').style.display = 'block';
 }
