@@ -15,10 +15,11 @@ async function loadQuestions() {
     }
 }
 
-// Memuat leaderboard dari file JSON
+// Memuat leaderboard dari API
 async function loadLeaderboard() {
     try {
-        const response = await fetch('leaderboard.json');
+        const response = await fetch('https://676afcc1bc36a202bb83d30a.mockapi.io/api/v1/users');
+        if (!response.ok) throw new Error('Gagal memuat leaderboard');
         return await response.json();
     } catch (error) {
         console.error('Gagal memuat leaderboard:', error);
@@ -26,19 +27,15 @@ async function loadLeaderboard() {
     }
 }
 
-// Menyimpan leaderboard ke file JSON
-async function saveLeaderboard(leaderboard) {
+// Menyimpan data leaderboard ke API
+async function saveLeaderboardEntry(name, score) {
     try {
-        const response = await fetch('leaderboard.json', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(leaderboard)
+        const response = await fetch('https://676afcc1bc36a202bb83d30a.mockapi.io/api/v1/users', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, score }),
         });
-        if (!response.ok) {
-            throw new Error('Gagal menyimpan leaderboard');
-        }
+        if (!response.ok) throw new Error('Gagal menyimpan leaderboard');
     } catch (error) {
         console.error('Gagal menyimpan leaderboard:', error);
     }
@@ -53,12 +50,11 @@ async function startGame(numQuestions) {
         return;
     }
 
-    // Ambil data leaderboard dari file JSON
+    // Ambil data leaderboard dari API
     const leaderboard = await loadLeaderboard();
     
     // Periksa apakah nama sudah ada
     const nameExists = leaderboard.some(entry => entry.name.toLowerCase() === username.toLowerCase());
-
     if (nameExists) {
         alert(`Nama "${username}" sudah digunakan. Silakan pilih nama lain.`);
         return;
@@ -96,7 +92,7 @@ function showNextQuestion() {
             button.onclick = () => handleAnswer(choice, questionData.correctAnswer);
             choicesContainer.appendChild(button);
         });
-        document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}\n\n`;
+        document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     } else {
         endGame();
     }
@@ -123,24 +119,11 @@ function handleAnswer(choice, correctAnswer) {
     }, 2000);
 }
 
-function endGame() {
+async function endGame() {
     if (username) {
-        saveScore(username, score);
+        await saveLeaderboardEntry(username, score);
     }
     showLeaderboard();
-}
-
-async function saveScore(name, score) {
-    const leaderboard = await loadLeaderboard();
-    const isNameDuplicate = leaderboard.some(entry => entry.name.toLowerCase() === name.toLowerCase());
-
-    if (isNameDuplicate) {
-        alert("Nama tersebut sudah ada di leaderboard. Silakan gunakan nama lain.");
-        return; // Hentikan proses jika nama duplikat
-    }
-    leaderboard.push({ name, score });
-    leaderboard.sort((a, b) => b.score - a.score);
-    await saveLeaderboard(leaderboard);
 }
 
 async function showLeaderboard() {
@@ -154,12 +137,14 @@ async function updateLeaderboard() {
     const leaderboardTable = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
     leaderboardTable.innerHTML = '';
 
-    leaderboard.forEach((entry, index) => {
-        const row = leaderboardTable.insertRow();
-        row.insertCell(0).textContent = index + 1;
-        row.insertCell(1).textContent = entry.name;
-        row.insertCell(2).textContent = entry.score;
-    });
+    leaderboard
+        .sort((a, b) => b.score - a.score) // Urutkan berdasarkan skor tertinggi
+        .forEach((entry, index) => {
+            const row = leaderboardTable.insertRow();
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = entry.name;
+            row.insertCell(2).textContent = entry.score;
+        });
 }
 
 function restartGame() {
