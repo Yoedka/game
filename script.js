@@ -16,30 +16,38 @@ async function loadQuestions() {
 }
 
 // Memulai permainan
+// Memulai permainan
 async function startGame(numQuestions) {
-    username = document.getElementById('username').value.trim();
+    const username = document.getElementById('username').value.trim();
 
     if (username === '') {
         alert("Masukkan nama Anda terlebih dahulu!");
         return;
     }
-const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+    // Ambil data leaderboard dari localStorage
+    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    
+    // Periksa apakah nama sudah ada
     const nameExists = leaderboard.some(entry => entry.name.toLowerCase() === username.toLowerCase());
 
     if (nameExists) {
-        alert("Nama tersebut sudah digunakan. Silakan pilih nama lain.");
+        alert(`Nama "${username}" sudah digunakan. Silakan pilih nama lain.`);
         return;
     }
+
+    // Lanjutkan permainan
     await loadQuestions();
 
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
 
-    totalQuestions = Math.min(numQuestions, questions.length); // Gunakan jumlah soal yang tersedia
+    totalQuestions = numQuestions;
     score = 0;
     currentQuestionIndex = 0;
     showNextQuestion();
 }
+
 
 // Menampilkan soal berikutnya
 function showNextQuestion() {
