@@ -69,8 +69,8 @@ function showNextQuestion() {
             button.onclick = () => handleAnswer(choice, questionData.correctAnswer);
             choicesContainer.appendChild(button);
         });
-
-        document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
+        document.getElementById('game-title').innerText = `Halo ${username}`;
+        document.getElementById('game-deskripsi').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     } else {
         endGame();
     }
