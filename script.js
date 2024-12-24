@@ -41,7 +41,7 @@ async function startGame(numQuestions) {
 
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
-
+    document.getElementById("namanya").textContent = `Halo 👋🏻 ${username}`;
     totalQuestions = numQuestions;
     score = 0;
     currentQuestionIndex = 0;
