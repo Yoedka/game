@@ -6,7 +6,7 @@
     <title>Permainan Trivia</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-       /* Umum */
+        /* Umum */
         body {
             font-family: 'Press Start 2P', cursive;
             background-color: #111;
@@ -157,7 +157,6 @@
             text-align: center;
             width: 100%;
             max-width: 500px;
-            align-items: center;
         }
 
         /* Media Queries untuk Responsif */
@@ -190,38 +189,6 @@
                 font-size: 1.2rem;
             }
         }
-#leaderboard {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#leaderboard table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 80%;
-    max-width: 600px;
-}
-
-#leaderboard th, #leaderboard td {
-    border: 1px solid #fff;
-    padding: 10px;
-    text-align: center;
-    font-size: 1rem;
-    color: #fff;
-}
-
-#leaderboard th {
-    background-color: #444;
-    color: #FF6F61;
-}
-
-#leaderboard td {
-    background-color: #222;
-}
-
-#leaderboard button {
-    margin-top: 20px;
-}
 
         @media (max-width: 768px) {
             /* Tablet atau perangkat dengan layar lebih kecil */
@@ -308,23 +275,21 @@
                 <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
             </div>
         </div>
-         <div id="game-screen" class="screen" style="display:none;">
+
+        <!-- Layar Permainan -->
+        <div id="game-screen" class="screen" style="display:none;">
             <h2 id="game-title" class="game-title"></h2>
             <p id="question" class="question"></p>
             <div id="choices" class="choices"></div>
             <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
-    <div id="leaderboard-screen" class="screen" style="display:none;">
-    <h2>Leaderboard</h2>
-    <div id="leaderboard"></div>
-    <button onclick="restartGame()">Main Lagi</button>
-</div>
-
     </main>
     
     <footer>
         &copy; Yoeda Dika All rights reserved.
     </footer>
+    
+    <audio id="background-music" src="blue.mp3" loop autoplay></audio>
     
     <script src="script.js"></script>
 </body>
