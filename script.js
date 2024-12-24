@@ -131,7 +131,9 @@ async function showLeaderboard() {
     document.getElementById('game-screen').style.display = 'none';
     document.getElementById('leaderboard-screen').style.display = 'block';
 }
-
+async function showLeaderboardSol() {
+    await updateLeaderboard();
+}
 async function updateLeaderboard() {
     const leaderboard = await loadLeaderboard();
     const leaderboardTable = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
