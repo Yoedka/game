@@ -2,6 +2,7 @@ let questions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let totalQuestions = 0;
+let username = ""; // Untuk menyimpan nama pengguna
 
 // Memuat soal dari file JSON
 async function loadQuestions() {
@@ -16,7 +17,7 @@ async function loadQuestions() {
 
 // Memulai permainan
 async function startGame(numQuestions) {
-    const username = document.getElementById('username').value.trim();
+    username = document.getElementById('username').value.trim();
 
     if (username === '') {
         alert("Masukkan nama Anda terlebih dahulu!");
@@ -28,7 +29,7 @@ async function startGame(numQuestions) {
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
 
-    totalQuestions = numQuestions;
+    totalQuestions = Math.min(numQuestions, questions.length); // Gunakan jumlah soal yang tersedia
     score = 0;
     currentQuestionIndex = 0;
     showNextQuestion();
@@ -37,15 +38,16 @@ async function startGame(numQuestions) {
 // Menampilkan soal berikutnya
 function showNextQuestion() {
     if (currentQuestionIndex < totalQuestions) {
-        // Ambil data soal saat ini
         const questionData = questions[currentQuestionIndex];
-        
-        // Update teks pertanyaan
+        if (!questionData) {
+            endGame();
+            return;
+        }
+
         document.getElementById('question').innerText = questionData.question;
 
-        // Update pilihan jawaban
         const choicesContainer = document.getElementById('choices');
-        choicesContainer.innerHTML = ''; // Hapus pilihan sebelumnya
+        choicesContainer.innerHTML = '';
         questionData.choices.forEach((choice) => {
             const button = document.createElement('button');
             button.innerText = choice;
@@ -54,11 +56,9 @@ function showNextQuestion() {
             choicesContainer.appendChild(button);
         });
 
-        // Update judul permainan
         document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}`;
     } else {
-        // Semua soal selesai, tampilkan leaderboard
-        showLeaderboard();
+        endGame();
     }
 }
 
@@ -69,44 +69,44 @@ function handleAnswer(choice, correctAnswer) {
         score++;
         feedback.style.display = 'block';
         feedback.innerText = "Jawaban Anda Benar!";
-        feedback.style.backgroundColor = '#4CAF50'; // Warna hijau untuk jawaban benar
+        feedback.style.backgroundColor = '#4CAF50';
     } else {
         feedback.style.display = 'block';
         feedback.innerText = `Jawaban Salah! Yang benar adalah: ${correctAnswer}`;
-        feedback.style.backgroundColor = '#f44336'; // Warna merah untuk jawaban salah
+        feedback.style.backgroundColor = '#f44336';
     }
 
-    // Tampilkan notifikasi dan lanjutkan ke pertanyaan berikutnya
     setTimeout(() => {
         feedback.style.display = 'none';
         currentQuestionIndex++;
         showNextQuestion();
-    }, 2000); // 2 detik
+    }, 2000);
 }
 
-
 function endGame() {
-    saveScore(username, score);
+    if (username) {
+        saveScore(username, score);
+    }
     showLeaderboard();
 }
 
 function saveScore(name, score) {
-    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
     leaderboard.push({ name, score });
     leaderboard.sort((a, b) => b.score - a.score);
-    localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
 }
 
 function showLeaderboard() {
     updateLeaderboard();
-    document.getElementById("game-screen").style.display = "none";
-    document.getElementById("leaderboard-screen").style.display = "block";
+    document.getElementById('game-screen').style.display = 'none';
+    document.getElementById('leaderboard-screen').style.display = 'block';
 }
 
 function updateLeaderboard() {
-    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
-    const leaderboardTable = document.getElementById("leaderboard-table").getElementsByTagName("tbody")[0];
-    leaderboardTable.innerHTML = "";
+    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    const leaderboardTable = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
+    leaderboardTable.innerHTML = '';
 
     leaderboard.forEach((entry, index) => {
         const row = leaderboardTable.insertRow();
@@ -117,9 +117,10 @@ function updateLeaderboard() {
 }
 
 function restartGame() {
-    document.getElementById("leaderboard-screen").style.display = "none";
-    document.getElementById("welcome-screen").style.display = "block";
+    document.getElementById('leaderboard-screen').style.display = 'none';
+    document.getElementById('welcome-screen').style.display = 'block';
 }
+
 window.onload = async () => {
     await loadQuestions();
 };
