@@ -1,157 +1,182 @@
 [
     {
-        "question": "Apa ibu kota negara Indonesia?",
-        "choices": ["Jakarta", "Bandung", "Surabaya", "Medan"],
-        "correctAnswer": "Jakarta"
+        "question": "Apa nama proses fotosintesis?",
+        "choices": ["Proses penguraian", "Proses pembentukan makanan", "Proses respirasi", "Proses reproduksi"],
+        "correctAnswer": "Proses pembentukan makanan"
     },
     {
-        "question": "Siapa penemu lampu pijar?",
-        "choices": ["Albert Einstein", "Thomas Edison", "Nikola Tesla", "Alexander Graham Bell"],
-        "correctAnswer": "Thomas Edison"
-    },
-    {
-        "question": "Hewan apa yang disebut 'Raja Hutan'?",
-        "choices": ["Macan", "Harimau", "Singa", "Serigala"],
-        "correctAnswer": "Singa"
-    },
-    {
-        "question": "Apa rumus kimia air?",
-        "choices": ["CO2", "O2", "H2O", "CH4"],
-        "correctAnswer": "H2O"
-    },
-    {
-        "question": "Berapa sisi yang dimiliki segitiga?",
-        "choices": ["Tiga", "Empat", "Lima", "Dua"],
-        "correctAnswer": "Tiga"
-    },
-    {
-        "question": "Siapa presiden pertama Indonesia?",
-        "choices": ["Sukarno", "Suharto", "BJ Habibie", "Gus Dur"],
-        "correctAnswer": "Sukarno"
-    },
-    {
-        "question": "Apa planet terbesar dalam tata surya?",
-        "choices": ["Mars", "Bumi", "Jupiter", "Saturnus"],
-        "correctAnswer": "Jupiter"
-    },
-    {
-        "question": "Apa nama benda langit yang mengelilingi planet?",
-        "choices": ["Asteroid", "Satelit", "Meteor", "Komet"],
-        "correctAnswer": "Satelit"
-    },
-    {
-        "question": "Siapa penulis novel \"Laskar Pelangi\"?",
-        "choices": ["Andrea Hirata", "Pramoedya Ananta Toer", "Habiburrahman El Shirazy", "Dee Lestari"],
-        "correctAnswer": "Andrea Hirata"
-    },
-    {
-        "question": "Apa nama laut terluas di dunia?",
-        "choices": ["Laut Atlantik", "Laut Hindia", "Laut Arktik", "Laut Pasifik"],
-        "correctAnswer": "Laut Pasifik"
-    },
-    {
-        "question": "Apa hasil dari 12 x 8?",
-        "choices": ["80", "88", "96", "92"],
-        "correctAnswer": "96"
-    },
-    {
-        "question": "Siapa tokoh yang dikenal sebagai \"Bapak Proklamasi\"?",
-        "choices": ["Mohammad Hatta", "Sukarno", "Jenderal Sudirman", "Soepomo"],
-        "correctAnswer": "Sukarno"
-    },
-    {
-        "question": "Di mana Tembok Besar berada?",
-        "choices": ["Jepang", "China", "Korea Selatan", "India"],
-        "correctAnswer": "China"
-    },
-    {
-        "question": "Berapa jumlah provinsi di Indonesia? (per 2023)",
-        "choices": ["38", "36", "37", "39"],
-        "correctAnswer": "38"
-    },
-    {
-        "question": "Apa alat musik tradisional dari Jawa Barat?",
-        "choices": ["Angklung", "Gamelan", "Sasando", "Tifa"],
-        "correctAnswer": "Angklung"
-    },
-    {
-        "question": "Apa fungsi dari klorofil pada tumbuhan?",
-        "choices": ["Menarik air", "Menangkap sinar matahari", "Mengangkut nutrisi", "Menghasilkan oksigen"],
-        "correctAnswer": "Menangkap sinar matahari"
-    },
-    {
-        "question": "Apa nama gunung tertinggi di dunia?",
-        "choices": ["K2", "Everest", "Denali", "Kilimanjaro"],
-        "correctAnswer": "Everest"
-    },
-    {
-        "question": "Siapa tokoh yang menciptakan teori gravitasi?",
-        "choices": ["Galileo Galilei", "Isaac Newton", "Albert Einstein", "Nikola Tesla"],
+        "question": "Siapa penemu hukum gravitasi?",
+        "choices": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
         "correctAnswer": "Isaac Newton"
     },
     {
-        "question": "Berapa bilangan prima antara 1 sampai 10?",
-        "choices": ["4", "5", "6", "7"],
-        "correctAnswer": "4"
+        "question": "Apa rumus luas lingkaran?",
+        "choices": ["πr²", "2πr", "πd", "r²"],
+        "correctAnswer": "πr²"
     },
     {
-        "question": "Apa nama organ yang memompa darah ke seluruh tubuh?",
-        "choices": ["Hati", "Jantung", "Ginjal", "Paru-paru"],
-        "correctAnswer": "Jantung"
+        "question": "Apa nama ibu kota Indonesia?",
+        "choices": ["Jakarta", "Bali", "Surabaya", "Bandung"],
+        "correctAnswer": "Jakarta"
     },
     {
-        "question": "Apa singkatan dari WHO?",
-        "choices": ["World Health Organization", "World Humanity Organization", "World Help Organization", "World Home Organization"],
-        "correctAnswer": "World Health Organization"
+        "question": "Apa nama unsur kimia dengan simbol O?",
+        "choices": ["Oksigen", "Oganesson", "Osmium", "Onium"],
+        "correctAnswer": "Oksigen"
     },
     {
-        "question": "Apa simbol kimia dari emas?",
-        "choices": ["Ag", "Au", "Fe", "Pt"],
-        "correctAnswer": "Au"
+        "question": "Siapa yang menulis 'Bumi Manusia'?",
+        "choices": ["Pramoedya Ananta Toer", "Chairil Anwar", "Sapardi Djoko Damono", "Taufiq Ismail"],
+        "correctAnswer": "Pramoedya Ananta Toer"
     },
     {
-        "question": "Apa nama burung khas Papua?",
-        "choices": ["Cenderawasih", "Kakaktua", "Elang", "Merpati"],
-        "correctAnswer": "Cenderawasih"
+        "question": "Apa nama sistem pemerintahan di Indonesia?",
+        "choices": ["Monarki", "Oligarki", "Demokrasi", "Totaliter"],
+        "correctAnswer": "Demokrasi"
     },
     {
-        "question": "Apa arti warna merah pada bendera Indonesia?",
-        "choices": ["Keberanian", "Kesucian", "Kemerdekaan", "Kemakmuran"],
-        "correctAnswer": "Keberanian"
+        "question": "Apa nama proses perubahan air menjadi uap?",
+        "choices": ["Kondensasi", "Evaporasi", "Sublimasi", "Presipitasi"],
+        "correctAnswer": "Evaporasi"
     },
     {
-        "question": "Apa nama sungai terpanjang di dunia?",
-        "choices": ["Sungai Nil", "Sungai Amazon", "Sungai Yangtze", "Sungai Mekong"],
-        "correctAnswer": "Sungai Nil"
+        "question": "Apa nama alat untuk mengukur suhu?",
+        "choices": ["Barometer", "Termometer", "Hygrometer", "Anemometer"],
+        "correctAnswer": "Termometer"
     },
     {
-        "question": "Apa ibukota provinsi Sumatera Utara?",
-        "choices": ["Padang", "Medan", "Pekanbaru", "Banda Aceh"],
-        "correctAnswer": "Medan"
+        "question": "Apa nama benua yang paling kecil?",
+        "choices": ["Afrika", "Australia", "Eropa", "Antartika"],
+        "correctAnswer": "Australia"
     },
     {
-        "question": "Apa sebutan untuk bilangan yang bisa dibagi oleh 1 dan dirinya sendiri?",
-        "choices": ["Bilangan Ganjil", "Bilangan Prima", "Bilangan Bulat", "Bilangan Pecahan"],
-        "correctAnswer": "Bilangan Prima"
+        "question": "Apa nama proses pembentukan batuan sedimen?",
+        "choices": ["Erosi", "Sedimentasi", "Metamorfosis", "Kompaksi"],
+        "correctAnswer": "Sedimentasi"
     },
     {
-        "question": "Siapa pelukis dari karya \"Mona Lisa\"?",
-        "choices": ["Michelangelo", "Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"],
-        "correctAnswer": "Leonardo da Vinci"
+        "question": "Siapa yang menemukan teori evolusi?",
+        "choices": ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "Albert Einstein"],
+        "correctAnswer": "Charles Darwin"
     },
     {
-        "question": "Apa hasil dari akar kuadrat 64?",
-        "choices": ["6", "7", "8", "9"],
-        "correctAnswer": "8"
+        "question": "Apa nama sistem penulisan yang digunakan di Mesir kuno?",
+        "choices": ["Hieroglif", "Cuneiform", "Alfabet", "Piktogram"],
+        "correctAnswer": "Hieroglif"
     },
     {
-        "question": "Siapa tokoh yang dikenal dengan \"Bapak Komputer\"?",
-        "choices": ["Alan Turing", "Charles Babbage", "Steve Jobs", "Bill Gates"],
-        "correctAnswer": "Charles Babbage"
+        "question": "Apa nama hukum yang menyatakan bahwa benda yang diam akan tetap diam?",
+        "choices": ["Hukum Newton I", "Hukum Newton II", "Hukum Newton III", "Hukum Archimedes"],
+        "correctAnswer": "Hukum Newton I"
     },
     {
-        "question": "Apa nama ibu kota Jepang?",
-        "choices": ["Seoul", "Beijing", "Bangkok", "Tokyo"],
-        "correctAnswer": "Tokyo"
+        "question": "Apa nama proses pembelahan sel?",
+        "choices": ["Mitotic", "Meiosis", "Fusi", "Kloning"],
+        "correctAnswer": "Mitotic"
+    },
+    {
+        "question": "Apa nama alat musik yang memiliki 88 tuts?",
+        "choices": ["Gitar", "Biola", "Piano", "Saksofon"],
+        "correctAnswer": "Piano"
+    },
+    {
+        "question": "Apa nama teori yang menjelaskan asal usul alam semesta?",
+        "choices": ["Teori Relativitas", "Teori Big Bang", "Teori Evolusi", "Teori Kuantum"],
+        "correctAnswer": "Teori Big Bang"
+    },
+    {
+        "question": "Apa nama proses penguraian bahan organik oleh mikroorganisme?",
+        "choices": ["Degradasi", "Fermentasi", "Komposting", "Respirasi"],
+        "correctAnswer": "Degradasi"
+    },
+    {
+        "question": "Apa nama alat untuk mengukur tekanan udara?",
+        "choices": ["Barometer", "Termometer", "Hygrometer", "Anem ometer"],
+        "correctAnswer": "Barometer"
+    },
+    {
+        "question": "Apa nama unsur kimia dengan simbol Na?",
+        "choices": ["Natrium", "Nitrogen", "Neon", "Nikel"],
+        "correctAnswer": "Natrium"
+    },
+    {
+        "question": "Siapa yang menulis 'Siti Nurbaya'?",
+        "choices": ["Marah Rusli", "Hamka", "Pramoedya Ananta Toer", "Chairil Anwar"],
+        "correctAnswer": "Marah Rusli"
+    },
+    {
+        "question": "Apa nama proses pembentukan awan?",
+        "choices": ["Kondensasi", "Evaporasi", "Presipitasi", "Transpirasi"],
+        "correctAnswer": "Kondensasi"
+    },
+    {
+        "question": "Apa nama hukum yang menyatakan bahwa gaya sama dengan massa dikali percepatan?",
+        "choices": ["Hukum Newton I", "Hukum Newton II", "Hukum Newton III", "Hukum Archimedes"],
+        "correctAnswer": "Hukum Newton II"
+    },
+    {
+        "question": "Apa nama alat musik yang berasal dari Tiongkok dan memiliki senar?",
+        "choices": ["Piano", "Gitar", "Erhu", "Biola"],
+        "correctAnswer": "Erhu"
+    },
+    {
+        "question": "Apa nama proses perubahan gas menjadi cair?",
+        "choices": ["Kondensasi", "Evaporasi", "Sublimasi", "Presipitasi"],
+        "correctAnswer": "Kondensasi"
+    },
+    {
+        "question": "Apa nama benua yang memiliki populasi terbesar?",
+        "choices": ["Afrika", "Asia", "Eropa", "Amerika Utara"],
+        "correctAnswer": "Asia"
+    },
+    {
+        "question": "Siapa yang menemukan hukum gerak planet?",
+        "choices": ["Isaac Newton", "Johannes Kepler", "Galileo Galilei", "Albert Einstein"],
+        "correctAnswer": "Johannes Kepler"
+    },
+    {
+        "question": "Apa nama proses pembentukan batuan metamorf?",
+        "choices": ["Erosi", "Sedimentasi", "Metamorfosis", "Kompaksi"],
+        "correctAnswer": "Metamorfosis"
+    },
+    {
+        "question": "Apa nama unsur kimia dengan simbol Fe?",
+        "choices": ["Fosfor", "Ferro", "Besi", "Fluorin"],
+        "correctAnswer": "Besi"
+    },
+    {
+        "question": "Apa nama alat untuk mengukur kelembapan udara?",
+        "choices": ["Barometer", "Termometer", "Hygrometer", "Anemometer"],
+        "correctAnswer": "Hygrometer"
+    },
+    {
+        "question": "Apa nama proses penguraian bahan organik oleh jamur?",
+        "choices": ["Degradasi", "Fermentasi", "Komposting", "Respirasi"],
+        "correctAnswer": "Fermentasi"
+    },
+    {
+        "question": "Apa nama hukum yang menyatakan bahwa setiap aksi memiliki reaksi yang sama dan berlawanan?",
+        "choices": ["Hukum Newton I", "Hukum Newton II", "Hukum Newton III", "Hukum Archimedes"],
+        "correctAnswer": "Hukum Newton III"
+    },
+    {
+        "question": "Apa nama proses perubahan dari padat menjadi gas?",
+        "choices": ["Kondensasi", "Evaporasi", "Sublimasi", "Presipitasi"],
+        "correctAnswer": "Sublimasi"
+    },
+    {
+        "question": "Siapa yang menulis 'Laskar Pelangi'?",
+        "choices": ["Andrea Hirata", "Habiburrahman El Shirazy", "Tere Liye", "Pramoedya Ananta Toer"],
+        "correctAnswer": "Andrea Hirata"
+    },
+    {
+        "question": "Apa nama alat untuk mengukur intensitas cahaya?",
+        "choices": ["Luxmeter", "Barometer", "Termometer", "Hygrometer"],
+        "correctAnswer": "Luxmeter"
+    },
+    {
+        "question": "Apa nama proses pembentukan es?",
+        "choices": ["Kondensasi", "Evaporasi", "Pembekuan", "Sublimasi"],
+        "correctAnswer": "Pembekuan"
     }
-]
+] 
