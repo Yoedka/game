@@ -15,6 +15,35 @@ async function loadQuestions() {
     }
 }
 
+// Memuat leaderboard dari file JSON
+async function loadLeaderboard() {
+    try {
+        const response = await fetch('leaderboard.json');
+        return await response.json();
+    } catch (error) {
+        console.error('Gagal memuat leaderboard:', error);
+        return [];
+    }
+}
+
+// Menyimpan leaderboard ke file JSON
+async function saveLeaderboard(leaderboard) {
+    try {
+        const response = await fetch('leaderboard.json', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(leaderboard)
+        });
+        if (!response.ok) {
+            throw new Error('Gagal menyimpan leaderboard');
+        }
+    } catch (error) {
+        console.error('Gagal menyimpan leaderboard:', error);
+    }
+}
+
 // Memulai permainan
 async function startGame(numQuestions) {
     username = document.getElementById('username').value.trim();
@@ -24,8 +53,8 @@ async function startGame(numQuestions) {
         return;
     }
 
-    // Ambil data leaderboard dari localStorage
-    const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    // Ambil data leaderboard dari file JSON
+    const leaderboard = await loadLeaderboard();
     
     // Periksa apakah nama sudah ada
     const nameExists = leaderboard.some(entry => entry.name.toLowerCase() === username.toLowerCase());
@@ -67,7 +96,7 @@ function showNextQuestion() {
             button.onclick = () => handleAnswer(choice, questionData.correctAnswer);
             choicesContainer.appendChild(button);
         });
-      document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}\n\n`;
+        document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}\n\n`;
     } else {
         endGame();
     }
@@ -101,8 +130,8 @@ function endGame() {
     showLeaderboard();
 }
 
-function saveScore(name, score) {
-    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+async function saveScore(name, score) {
+    const leaderboard = await loadLeaderboard();
     const isNameDuplicate = leaderboard.some(entry => entry.name.toLowerCase() === name.toLowerCase());
 
     if (isNameDuplicate) {
@@ -111,17 +140,17 @@ function saveScore(name, score) {
     }
     leaderboard.push({ name, score });
     leaderboard.sort((a, b) => b.score - a.score);
-    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    await saveLeaderboard(leaderboard);
 }
 
-function showLeaderboard() {
-    updateLeaderboard();
+async function showLeaderboard() {
+    await updateLeaderboard();
     document.getElementById('game-screen').style.display = 'none';
     document.getElementById('leaderboard-screen').style.display = 'block';
 }
 
-function updateLeaderboard() {
-    const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+async function updateLeaderboard() {
+    const leaderboard = await loadLeaderboard();
     const leaderboardTable = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
     leaderboardTable.innerHTML = '';
 
@@ -137,6 +166,7 @@ function restartGame() {
     document.getElementById('leaderboard-screen').style.display = 'none';
     document.getElementById('welcome-screen').style.display = 'block';
 }
+
 window.onload = async () => {
     await loadQuestions();
 };
