@@ -23,7 +23,13 @@ async function startGame(numQuestions) {
         alert("Masukkan nama Anda terlebih dahulu!");
         return;
     }
+const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+    const nameExists = leaderboard.some(entry => entry.name.toLowerCase() === username.toLowerCase());
 
+    if (nameExists) {
+        alert("Nama tersebut sudah digunakan. Silakan pilih nama lain.");
+        return;
+    }
     await loadQuestions();
 
     document.getElementById('welcome-screen').style.display = 'none';
