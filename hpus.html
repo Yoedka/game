@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapus Data LocalStorage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff4f41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hapus Data LocalStorage</h1>
+    <button onclick="deleteLeaderboard()">Hapus Leaderboard</button>
+    <button onclick="deleteAllLocalStorage()">Hapus Semua Data</button>
+
+    <script>
+        // Fungsi untuk menghapus leaderboard
+        function deleteLeaderboard() {
+            if (localStorage.getItem('leaderboard')) {
+                localStorage.removeItem('leaderboard');
+                alert('Data leaderboard berhasil dihapus!');
+            } else {
+                alert('Tidak ada data leaderboard yang ditemukan.');
+            }
+        }
+
+        // Fungsi untuk menghapus semua data di localStorage
+        function deleteAllLocalStorage() {
+            if (confirm('Apakah Anda yakin ingin menghapus semua data?')) {
+                localStorage.clear();
+                alert('Semua data localStorage telah dihapus!');
+            }
+        }
+    </script>
+</body>
+</html>
