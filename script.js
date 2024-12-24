@@ -139,34 +139,6 @@ function restartGame() {
     document.getElementById('leaderboard-screen').style.display = 'none';
     document.getElementById('welcome-screen').style.display = 'block';
 }
-const snowContainer = document.getElementById('snow-container');
-
-function createSnowflake() {
-  const snowflake = document.createElement('div');
-  snowflake.classList.add('snowflake');
-  snowflake.textContent = '❄';
-
-  // Mengatur posisi horizontal secara acak
-  snowflake.style.left = Math.random() * 100 + 'vw';
-
-  // Mengatur durasi animasi secara acak
-  snowflake.style.animationDuration = Math.random() * 5 + 3 + 's'; // 3-8 detik
-
-  // Mengatur ukuran salju secara acak
-  snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // 10-20px
-
-  // Tambahkan ke elemen container
-  snowContainer.appendChild(snowflake);
-
-  // Hapus elemen salju dari DOM setelah selesai animasi
-  setTimeout(() => {
-    snowflake.remove();
-  }, parseFloat(snowflake.style.animationDuration) * 1000);
-}
-
-// Membuat salju baru setiap 100ms
-setInterval(createSnowflake, 100);
-
 window.onload = async () => {
     await loadQuestions();
 };
