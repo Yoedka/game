@@ -71,21 +71,26 @@
             background-color: #555;
         }
 
-        .back-btn {
+        .question-btn {
             background-color: #FF6F61;
             border: none;
+            padding: 15px 30px;
             color: #fff;
-            padding: 10px 20px;
             font-size: 1.2rem;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
+            border-radius: 8px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
-        .back-btn:hover {
+        .question-btn:hover {
             background-color: #FF9E7B;
+            transform: scale(1.1);
         }
+
+        .question-btn:active {
+            transform: scale(1);
+        }
+
     </style>
 </head>
 <body>
@@ -107,7 +112,7 @@
             </thead>
             <tbody></tbody>
         </table>
-   <a href="index.html" class="back-btn">Kembali ke Permainan</a>
+  <button class="question-btn" onclick="restartGame()">Main Lagi</button>
         </div>
     </main>
 
