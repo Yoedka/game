@@ -12,32 +12,43 @@
             background-color: #111;
             color: #fff;
             margin: 0;
-            padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: auto; /* Mengubah overflow dari hidden ke auto */
+            min-height: 100vh;
         }
 
         header {
             text-align: center;
             background: #222;
-            padding: 1.5vw;
+            padding: 15px 10px;
             font-size: 1.5rem;
             color: #FF6F61;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+        footer {
+            text-align: center;
+            background: #222;
+            color: #fff;
+            padding: 10px;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            gap: 30px;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-top: 15px;
+            font-size: 1.8rem;
+            margin-top: 10px;
         }
 
         /* Layar Selamat Datang */
@@ -46,20 +57,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             text-align: center;
+            gap: 25px;
         }
 
         input[type="text"] {
-            padding: 1vw;
-            margin: 1.5vw 0;
+            padding: 15px;
+            margin: 10px 0;
             background-color: #444;
             border: 1px solid #FF6F61;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.2rem;
             width: 100%;
-            max-width: 350px;
+            max-width: 300px;
             text-align: center;
+            border-radius: 5px;
         }
 
         input[type="text"]:focus {
@@ -70,188 +82,68 @@
         .question-selection {
             display: flex;
             flex-direction: column;
-            gap: 1.5vw;
+            gap: 20px;
             align-items: center;
         }
 
         .question-btn {
             background-color: #FF6F61;
             border: none;
-            padding: 1vw 2vw;
+            padding: 15px 30px;
             color: #fff;
-            font-size: 1rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            border-radius: 5px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
             transition: transform 0.2s ease, background-color 0.2s ease;
         }
 
         .question-btn:hover {
             background-color: #FF9E7B;
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .question-btn:active {
-            transform: scale(0.95);
+            transform: scale(1);
         }
 
-        /* Layar Permainan */
-        .game-title {
-            font-size: 1.5rem;
-            margin: 1vw 0;
-        }
-
-        .question {
-            font-size: 1.2rem;
-            margin: 2vh 0;
-            padding: 1.5vw;
-            background: #222;
-            border-radius: 8px;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .choices {
-            display: flex;
-            flex-direction: column;
-            gap: 2vh;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .choice-btn {
-            background-color: #333;
-            color: #fff;
-            padding: 1.5vw;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .choice-btn:hover {
-            background-color: #FF6F61;
-            transform: scale(1.05);
-        }
-
-        .choice-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Animasi */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .notification {
-            display: block;
-            margin-top: 3vh;
-            padding: 2vw;
-            background-color: #FF9E7B;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            color: #000;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        /* Media Queries untuk Responsif */
-        @media (max-width: 1200px) {
-            /* Perangkat dengan lebar layar maksimum 1200px */
-            body {
-                padding: 0 5vw;
-            }
-
-            .screen {
-                width: 100%;
-                padding: 10vh 5vw;
-            }
-
-            input[type="text"] {
-                max-width: 80%;
-                font-size: 1.2rem;
-            }
-
-            .question-btn, .choice-btn {
-                padding: 1vw 2vw;
-                font-size: 1.2rem;
-            }
-
-            .game-title {
-                font-size: 1.5rem;
-            }
-
-            .question {
-                font-size: 1.2rem;
-            }
-        }
-
+        /* Media Queries */
         @media (max-width: 768px) {
-            /* Tablet atau perangkat dengan layar lebih kecil */
-            body {
-                padding: 0 5vw;
+            header {
+                font-size: 1.3rem;
+                padding: 10px;
             }
 
-            .screen {
-                width: 100%;
-                padding: 10vh 5vw;
-            }
-
-            input[type="text"] {
-                max-width: 80%;
-                font-size: 1.2rem;
-            }
-
-            .question-btn, .choice-btn {
-                padding: 1vw 2vw;
-                font-size: 1.2rem;
-            }
-
-            .game-title {
+            h2 {
                 font-size: 1.5rem;
             }
 
-            .question {
-                font-size: 1.2rem;
+            input[type="text"] {
+                font-size: 1rem;
+            }
+
+            .question-btn {
+                font-size: 1rem;
+                padding: 12px 25px;
             }
         }
 
         @media (max-width: 480px) {
-            /* Perangkat mobile */
-            body {
-                padding: 0 5vw;
+            header {
+                font-size: 1.2rem;
+                padding: 8px;
             }
 
-            .screen {
-                width: 100%;
-                padding: 10vh 5vw;
+            h2 {
+                font-size: 1.3rem;
             }
 
             input[type="text"] {
-                max-width: 90%;
-                font-size: 1.2rem;
+                font-size: 0.9rem;
             }
 
-            .question-btn, .choice-btn {
-                padding: 1vw 2vw;
-                font-size: 1.2rem;
-            }
-
-            .game-title {
-                font-size: 1.5rem;
-            }
-
-            .question {
-                font-size: 1.2rem;
-            }
-
-            .notification {
-                font-size: 1.2rem;
-                padding: 3vw;
+            .question-btn {
+                font-size: 0.9rem;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -275,21 +167,11 @@
                 <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
             </div>
         </div>
-
-        <!-- Layar Permainan -->
-        <div id="game-screen" class="screen" style="display:none;">
-            <h2 id="game-title" class="game-title"></h2>
-            <p id="question" class="question"></p>
-            <div id="choices" class="choices"></div>
-            <div id="answer-feedback" class="notification" style="display:none;"></div>
-        </div>
     </main>
     
     <footer>
         &copy; Yoeda Dika All rights reserved.
     </footer>
-    
-    <audio id="background-music" src="blue.mp3" loop autoplay></audio>
     
     <script src="script.js"></script>
 </body>
