@@ -92,6 +92,12 @@ function endGame() {
 
 function saveScore(name, score) {
     const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    const isNameDuplicate = leaderboard.some(entry => entry.name === name);
+
+    if (isNameDuplicate) {
+        alert("Nama tersebut sudah ada di leaderboard. Silakan gunakan nama lain.");
+        return; // Hentikan proses jika nama duplikat
+    }
     leaderboard.push({ name, score });
     leaderboard.sort((a, b) => b.score - a.score);
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
