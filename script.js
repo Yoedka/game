@@ -16,9 +16,8 @@ async function loadQuestions() {
 }
 
 // Memulai permainan
-// Memulai permainan
 async function startGame(numQuestions) {
-    const username = document.getElementById('username').value.trim();
+    username = document.getElementById('username').value.trim();
 
     if (username === '') {
         alert("Masukkan nama Anda terlebih dahulu!");
@@ -47,7 +46,6 @@ async function startGame(numQuestions) {
     currentQuestionIndex = 0;
     showNextQuestion();
 }
-
 
 // Menampilkan soal berikutnya
 function showNextQuestion() {
@@ -105,7 +103,7 @@ function endGame() {
 
 function saveScore(name, score) {
     const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
-    const isNameDuplicate = leaderboard.some(entry => entry.name === name);
+    const isNameDuplicate = leaderboard.some(entry => entry.name.toLowerCase() === name.toLowerCase());
 
     if (isNameDuplicate) {
         alert("Nama tersebut sudah ada di leaderboard. Silakan gunakan nama lain.");
