@@ -131,9 +131,7 @@ async function showLeaderboard() {
     document.getElementById('game-screen').style.display = 'none';
     document.getElementById('leaderboard-screen').style.display = 'block';
 }
-async function showLeaderboardSol() {
-    await updateLeaderboard();
-}
+
 async function updateLeaderboard() {
     const leaderboard = await loadLeaderboard();
     const leaderboardTable = document.getElementById('leaderboard-table').getElementsByTagName('tbody')[0];
@@ -148,7 +146,20 @@ async function updateLeaderboard() {
             row.insertCell(2).textContent = entry.score;
         });
 }
+async function updateLeaderboard1() {
+    const leaderboard = await loadLeaderboard();
+    const leaderboardTable1 = document.getElementById('leaderboard-table1').getElementsByTagName('tbody')[0];
+    leaderboardTable.innerHTML = '';
 
+    leaderboard
+        .sort((a, b) => b.score - a.score) // Urutkan berdasarkan skor tertinggi
+        .forEach((entry, index) => {
+            const row = leaderboardTable1.insertRow();
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = entry.name;
+            row.insertCell(2).textContent = entry.score;
+        });
+}
 function restartGame() {
     document.getElementById('leaderboard-screen').style.display = 'none';
     document.getElementById('welcome-screen').style.display = 'block';
