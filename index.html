@@ -50,7 +50,18 @@
             font-size: 1.8rem;
             margin-top: 10px;
         }
-
+.notification {
+            display: block;
+            margin-top: 3vh;
+            padding: 2vw;
+            background-color: #FF9E7B;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: #000;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+}
         /* Layar Selamat Datang */
         .screen {
             display: flex;
@@ -146,6 +157,36 @@
                 padding: 10px 20px;
             }
         }
+        .choices {
+    display: flex;
+    flex-wrap: wrap; /* Membuat pilihan terisi ke baris baru jika perlu */
+    justify-content: center; /* Pusatkan tombol */
+    gap: 15px; /* Jarak antar tombol */
+    margin-top: 20px;
+}
+
+.choice-btn {
+    background-color: #444; /* Warna latar tombol */
+    color: #fff; /* Warna teks */
+    padding: 15px 25px; /* Ukuran tombol lebih besar */
+    border-radius: 10px; /* Sudut tombol membulat */
+    font-size: 1.2rem; /* Ukuran font tombol */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    border: 2px solid #FF6F61; /* Tambahkan border */
+}
+
+.choice-btn:hover {
+    background-color: #FF6F61; /* Warna saat hover */
+    color: #000; /* Teks berubah hitam */
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+.choice-btn:active {
+    transform: scale(0.95); /* Efek saat ditekan */
+        }
+        
     </style>
 </head>
 <body>
@@ -167,6 +208,13 @@
                 <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
             </div>
         </div>
+        <div id="game-screen" class="screen" style="display:none;">
+    <h2 id="game-title" class="game-title"></h2>
+    <p id="question" class="question"></p>
+    <div id="choices" class="choices"></div>
+    <div id="answer-feedback" class="notification" style="display:none;"></div>
+        </div>
+        
     </main>
     
     <footer>
