@@ -6,7 +6,7 @@
     <title>Leaderboard - Permainan Trivia</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* Gaya CSS mirip dengan game */
+        /* Umum */
         body {
             font-family: 'Press Start 2P', cursive;
             background-color: #1A1A1D;
@@ -18,25 +18,7 @@
             justify-content: center;
             align-items: center;
         }
-.question-btn {
-            background-color: #FF6F61;
-            border: none;
-            padding: 15px 30px;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
 
-        .question-btn:hover {
-            background-color: #FF9E7B;
-            transform: scale(1.1);
-        }
-
-        .question-btn:active {
-            transform: scale(1);
-        }
         header {
             position: fixed;
             top: 0;
@@ -52,12 +34,27 @@
             z-index: 1000;
         }
 
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #222;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
         table {
             width: 80%;
             border-collapse: collapse;
             background-color: #333;
             color: white;
-            margin-top: 100px;
+            margin-top: 20px;
         }
 
         th, td {
@@ -74,22 +71,41 @@
             background-color: #555;
         }
 
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #222;
-            text-align: center;
-            padding: 10px;
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #FF6F61;
+            border: none;
+            padding: 15px 30px;
             color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            margin: 0 10px;
+        }
+
+        .button:hover {
+            background-color: #FF9E7B;
+            transform: scale(1.1);
+        }
+
+        .button:active {
+            transform: scale(1);
         }
     </style>
 </head>
 <body>
+
     <header>
         Leaderboard - Permainan Trivia
     </header>
+
     <main>
+        <h1>Leaderboard</h1>
         <table id="leaderboard-table">
             <thead>
                 <tr>
@@ -100,12 +116,17 @@
             </thead>
             <tbody></tbody>
         </table>
-        <a href="index.html" class="question-btn">Kembali ke permainan</a>
-        
+
+        <div class="button-container">
+            <a href="index.html" class="button">Kembali ke permainan</a>
+            
+        </div>
     </main>
+
     <footer>
         &copy; Yoeda Dika All rights reserved.
     </footer>
-    <script src="leaderboard.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
