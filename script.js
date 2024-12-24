@@ -41,7 +41,7 @@ async function startGame(numQuestions) {
 
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('game-screen').style.display = 'block';
-    document.getElementById("namanya").textContent = `Halo 👋🏻 ${username}`;
+    document.getElementById("namanya").textContent = `Halo ${username} 👋🏻`;
     totalQuestions = numQuestions;
     score = 0;
     currentQuestionIndex = 0;
@@ -69,7 +69,7 @@ function showNextQuestion() {
             button.onclick = () => handleAnswer(choice, questionData.correctAnswer);
             choicesContainer.appendChild(button);
         });
-      document.getElementById('game-title').innerText = `Halo ${username}\n\nScore: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}\n\n`;
+      document.getElementById('game-title').innerText = `Score: ${score} | Question ${currentQuestionIndex + 1} of ${totalQuestions}\n\n`;
     } else {
         endGame();
     }
