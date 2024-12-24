@@ -70,36 +70,9 @@
             text-align: center;
             width: 100%;
             max-width: 500px;
+            align-items: center;
 }
-        #snow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Supaya elemen salju tidak mengganggu interaksi */
-  z-index: 1; /* Di belakang konten */
-}
-
-.snowflake {
-  position: absolute;
-  top: -10px;
-  color: white;
-  font-size: 10px;
-  opacity: 0.8;
-  animation: fall infinite linear;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0.5;
-  }
-}
+  
         /* Layar Selamat Datang */
         .screen {
             display: flex;
@@ -196,12 +169,12 @@
             }
         }
         .choices {
-    display: flex;
-    flex-wrap: wrap; /* Membuat pilihan terisi ke baris baru jika perlu */
-    justify-content: center; /* Pusatkan tombol */
-    gap: 15px; /* Jarak antar tombol */
-    margin-top: 20px;
-}
+              display: flex;
+             flex-wrap: wrap; /* Membuat pilihan terisi ke baris baru jika perlu */
+             justify-content: center; /* Pusatkan tombol */
+             gap: 15px; /* Jarak antar tombol */
+             margin-top: 20px;
+             }
 
 .choice-btn {
     background-color: #444; /* Warna latar tombol */
@@ -263,6 +236,20 @@ th, td {
                 <button class="question-btn" onclick="startGame(20)">20 Pertanyaan</button>
             </div>
         </div>
+         <h2>Leadboard</h2>
+          <div id="leaderboard-wel">
+        <h1>Leaderboard</h1>
+        <table id="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Peringkat</th>
+                    <th>Nama</th>
+                    <th>Skor</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+                 </div>
         <div id="game-screen" class="screen" style="display:none;">
             <h2 id="namanya"></h2>
     <h2 id="game-title" class="game-title"></h2>
