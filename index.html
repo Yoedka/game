@@ -186,6 +186,22 @@
 .choice-btn:active {
     transform: scale(0.95); /* Efek saat ditekan */
         }
+        table {
+    margin: 20px auto; /* Memberikan jarak dan memusatkan tabel secara horizontal */
+    border-collapse: collapse; /* Menggabungkan border sel-sel tabel menjadi satu */
+    width: 80%; /* Lebar tabel 80% dari lebar kontainer */
+    background-color: #1e1e1e; /* Warna latar belakang tabel (abu-abu gelap) */
+    color: white; /* Warna teks dalam tabel */
+}
+
+table, th, td {
+    border: 1px solid white; /* Membuat border putih di tabel, header, dan cell */
+}
+
+th, td {
+    padding: 10px; /* Memberikan ruang dalam sel header dan sel tabel */
+    text-align: center; /* Memusatkan teks dalam header dan cell */
+}
         
     </style>
 </head>
@@ -214,7 +230,20 @@
     <div id="choices" class="choices"></div>
     <div id="answer-feedback" class="notification" style="display:none;"></div>
         </div>
-        
+        <div id="leaderboard-screen" style="display: none;">
+        <h1>Leaderboard</h1>
+        <table id="leaderboard-table">
+            <thead>
+                <tr>
+                    <th>Peringkat</th>
+                    <th>Nama</th>
+                    <th>Skor</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button onclick="restartGame()">Main Lagi</button>
+        </div>
     </main>
     
     <footer>
