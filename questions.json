@@ -66,7 +66,7 @@
     },
     {
         "question": "Berapa jumlah provinsi di Indonesia? (per 2023)",
-        "choices": ["33", "34", "35", "36"],
+        "choices": ["38", "36", "37", "39"],
         "correctAnswer": "38"
     },
     {
