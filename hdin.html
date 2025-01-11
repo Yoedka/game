@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tools Upscale Gambar dan Video</title>
+  <style>
+    /* CSS Dasar (untuk semua perangkat) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #666;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      }
+
+    #result {
+      margin-top: 30px;
+      display: none;
+    }
+
+    #image-result img, #video-result video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Upscale Gambar dan Video</h1>
+    <p>Unggah gambar atau video untuk meningkatkan kualitas resolusinya.</p>
+
+    <!-- Form untuk mengunggah gambar atau video -->
+    <input type="file" id="file-input" accept="image/*, video/*">
+    <button id="upload-btn" onclick="processFile()">Proses</button>
+
+    <div id="result">
+      <h2>Hasil Upscaling:</h2>
+      <div id="image-result"></div>
+      <div id="video-result"></div>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi untuk memproses file yang diunggah
+    function processFile() {
+      const fileInput = document.getElementById('file-input');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert("Pilih gambar atau video terlebih dahulu!");
+        return;
+      }
+
+      const fileType = file.type.split('/')[0];
+
+      // Menampilkan loading sementara
+      document.getElementById('result').style.display = 'none';
+      const resultDiv = document.getElementById(fileType === 'image' ? 'image-result' : 'video-result');
+      resultDiv.innerHTML = '<p>Memproses...</p>';
+      // Jika file adalah gambar
+      if (fileType === 'image') {
+        upscaleImage(file);
+      }
+      // Jika file adalah video
+      else if (fileType === 'video') {
+        upscaleVideo(file);
+      }
+    }
+
+    // Fungsi untuk meningkatkan resolusi gambar menggunakan API Remini
+    function upscaleImage(file) {
+      const formData = new FormData();
+      formData.append("image", file);
+
+      // Membaca file gambar yang diunggah
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        const imageUrl = reader.result; // Mengambil data URL gambar
+
+        // Mengirimkan gambar ke API Remini
+        fetch(`https://api.rifandavinci.my.id/aiimage/remini?url=encodeURIComponent(imageUrl)`)
+          .then(response => response.json())
+          .then(data => 
+            if (data        data.result) 
+              // Menampilkan gambar yang sudah di upscale
+              document.getElementById('image-result').innerHTML = `<img src="{data.result}" alt="Upscaled Image">`;
+            } else {
+              document.getElementById('image-result').innerHTML = '<p>Upscaling gagal!</p>';
+            }
+            document.getElementById('result').style.display = 'block';
+          })
+          .catch(err => {
+            console.error('Error:', err);
+            document.getElementById('image-result').innerHTML = '<p>Terjadi kesalahan saat memproses gambar.</p>';
+            document.getElementById('result').style.display = 'block';
+          });
+      };
+
+      reader.readAsDataURL(file); // Membaca gambar sebagai URL
+    }
+
+    // Fungsi untuk meningkatkan resolusi video
+    function upscaleVideo(file) {
+      const resultDiv = document.getElementById('video-result');
+      resultDiv.innerHTML = '<p>Fitur upscaling video belum tersedia di sini. Gunakan gambar untuk saat ini.</p>';
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
